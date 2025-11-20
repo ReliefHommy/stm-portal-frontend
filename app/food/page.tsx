@@ -1,4 +1,4 @@
-import FoodMasonryGrid, { MasonryItem } from "../components/food/page"
+import FoodMasonryGrid, { MasonryItem } from "../components/food/FoodMasonryGridComponent"
 import MainNavbar from "../components/hompage/MainNavbar"
 
 

@@ -12,7 +12,7 @@ export type MasonryItem = {
   href?: string
 }
 
-export default function FoodMasonryGrid({ items }: { items: MasonryItem[] }) {
+export default function FoodMasonryGridComponent({ items }: { items: MasonryItem[] }) {
   return (
     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
       {items.map((it) => (
