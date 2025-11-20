@@ -1,3 +1,4 @@
+// app/api/auth/login/route.ts
 import { NextResponse } from 'next/server'
 
 const DJANGO = process.env.NEXT_PUBLIC_API_BASE! // http://localhost:8000

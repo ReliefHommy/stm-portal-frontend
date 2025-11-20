@@ -18,7 +18,11 @@ export async function POST(req: Request) {
 
   const res = NextResponse.json({ ok: true })
   res.cookies.set('stm_token', data.access, {
-    httpOnly: true, secure: false, sameSite: 'lax', path: '/', maxAge: 60*15
+    httpOnly: true,
+    secure: false,        // you can flip this to NODE_ENV check later
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60*15,
   })
   return res
 }
