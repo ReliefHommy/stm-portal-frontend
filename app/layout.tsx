@@ -1,25 +1,23 @@
 //app/layout.tsx
-import React from 'react';
+
+
 import './globals.css'
 
 
 export const metadata = {
-  title: 'STM Portal',
-  description: 'Frontend for STM Portal',
+  title: 'STM Marketplace',
+  description: 'STM Marketplace for Thai culture - food, games, wellness.',
 };
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-import { ReactNode } from 'react';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
+
+
+
+ return (
     <html lang="en">
- 
-      <body>
-        
-          {children}
-       
-       
-        </body>
+      <body>{children}</body>
     </html>
   );
 }
+  

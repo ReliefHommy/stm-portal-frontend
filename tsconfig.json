@@ -17,11 +17,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+        /* 👇 ADD THESE TWO LINES 👇 */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+    
+  
   },
   "include": [
     "next-env.d.ts",
