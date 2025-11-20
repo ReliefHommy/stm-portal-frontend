@@ -1,6 +1,5 @@
-import FoodMasonryGrid,{ MasonryItem } from "../../components/food/FoodMasonryGrid"
-import MainNavbar from "../../components/hompage/MainNavbar"
-import Hero from "../../components/reuse/HeroSlide"
+import FoodMasonryGrid, { MasonryItem } from "../components/food/page"
+import MainNavbar from "../components/hompage/MainNavbar"
 
 
 const items: MasonryItem[] = [

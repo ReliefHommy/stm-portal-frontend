@@ -1,7 +1,6 @@
-
-import MainNavbar from "../../components/hompage/MainNavbar"
-import WellnessMasonryGrid,{ MasonryItem } from "../../components/wellness/WellnessMasonryGrid"
-
+import { MasonryItem } from "../components/food/page"
+import MainNavbar from "../components/hompage/MainNavbar"
+import WellnessMasonryGrid from "../components/wellness/WellnessMasonryGrid"
 
 const items: MasonryItem[] = [
   { id: 1, src: '/b1.png', title: 'Som Tam Essentials', subtitle: 'Papaya • Fish sauce • Lime' },
