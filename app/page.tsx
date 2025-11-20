@@ -2,12 +2,12 @@
 
 import React from "react";
 import MainNavbar from "./components/hompage/MainNavbar";
-import Hero from "./components/reuse/HeroSlide";
 import SubDomainCard from "./components/hompage/SubDomainCard";
 import FoodMarketPlace from "./components/hompage/FoodMarketPlace";
 import GamemarketPlace from "./components/hompage/GameMarketPlace";
 import WellnessMarketPlace from "./components/hompage/WellnessMarketPlace";
 import Footer from "./components/hompage/Footer";
+import Hero from "./components/hompage/Hero";
 
 
 
