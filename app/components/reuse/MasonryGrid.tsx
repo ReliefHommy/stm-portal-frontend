@@ -1,6 +1,6 @@
 
 
-import { type } from "os";
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 
 type MasonryCard = {

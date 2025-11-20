@@ -1,4 +1,4 @@
-
+/* eslint-disable @next/next/no-img-element */
 
 export default function SubHero() {
   return (
@@ -7,7 +7,7 @@ export default function SubHero() {
         Somtam Marketplace
       </h1>
       <p className="max-w-2xl mx-auto text-lg text-gray-700 mb-8">
-        Your Gateway to Thai Socity - &  Life's style in Europe.
+        Your Gateway to Thai Socity - Life style in Europe.
       </p>
       <a
         href="#explore"
