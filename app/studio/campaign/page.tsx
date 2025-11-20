@@ -98,7 +98,7 @@ export default function CampaignPage() {
       setTopic(normalized.topic)
       setKeywords(normalized.keywords ?? '')
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [search])
 
   async function onGenerate(e: React.FormEvent) {
@@ -285,7 +285,7 @@ export default function CampaignPage() {
             {data.campaign.posts?.map((p, i) => (
               <div key={i} className="rounded-xl border bg-white p-4 space-y-3">
                 <div className="font-medium">{p.title || `Post ${i+1}`}</div>
-                {p.overview && <div className="text-xs text-gray-500">{p.angle}</div>
+                {p.overview && <div className="text-xs text-gray-500"></div>
 
                 }
                 <div className="text-sm"><span className="font-semibold">CTA:</span> {p.cta || '—'}</div>

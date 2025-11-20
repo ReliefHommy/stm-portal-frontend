@@ -1,5 +1,4 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
-import Hero from "@/app/components/reuse/HeroSlide";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,7 +45,7 @@ const PartnerPage = () => {
           <div className="grid gap-4 md:grid-cols-3">
             <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
               <h3 className="text-sm font-semibold text-emerald-700">
-                Thai Grocery's Creator
+                Thai Grocery Creator
               </h3>
               <p className="mt-2 text-xs text-slate-700">
                 Brands, shops, and suppliers offering Thai ingredients, snacks,
