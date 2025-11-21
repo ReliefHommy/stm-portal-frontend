@@ -1,6 +1,6 @@
 // app/studio/page.tsx
 
-import MainNavbar from "../components/hompage/MainNavbar"
+
 import { apiGet } from "../../lib/fetcher"
 
 

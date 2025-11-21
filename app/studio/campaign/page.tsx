@@ -1,9 +1,9 @@
+//app/studio/campaign/page.tsx
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import {
-
   getCampaign,
   saveCampaign,
   importCampaign as importC,
@@ -80,7 +80,6 @@ export default function CampaignPage() {
     if (!id) return
     const saved = getCampaign(id)
     if (saved?.posts || saved?.campaign_title) {
-      // normalize into GenResp shape for preview
       const normalized: GenResp = {
         ok: true,
         pillar: (saved.pillar ?? 'Food') as any,
@@ -91,14 +90,12 @@ export default function CampaignPage() {
         campaign: saved,
       }
       setData(normalized)
-      // prefill form for convenience
       setPillar(normalized.pillar)
       setLanguage(normalized.language)
       setGoal(normalized.goal)
       setTopic(normalized.topic)
       setKeywords(normalized.keywords ?? '')
     }
-
   }, [search])
 
   async function onGenerate(e: React.FormEvent) {
@@ -162,39 +159,38 @@ export default function CampaignPage() {
 
   const onSaveLocal = () => {
     if (!data?.campaign) return
-    const id = saveCampaign({
+    saveCampaign({
       ...data.campaign,
       pillar, language, topic, goal, keywords,
     })
-    // go to saved list
     router.push('/studio/campaign/saved')
   }
-  const onSaveBackend = async () => {
-  if (!data?.campaign) return
-  const payload = {
-    title: data.campaign.campaign_title || topic,
-    overview: data.campaign.overview || '',
-    pillar, language, goal, keywords,
-    posts: (data.campaign.posts||[]).map(p=>({
-      title: p.title||'',
-      image_prompt: p.image_prompt||'',
-      email_subject: p.email?.subject||'',
-      email_body: p.email?.body||'',
-      fb_text: p.social?.facebook?.text||'',
-      ig_text: p.social?.instagram?.text||'',
-      pin_title: p.social?.pinterest?.title||'',
-      pin_desc: p.social?.pinterest?.description||'',
-      cta: p.cta||'',
-      hashtags: p.hashtags||[],
-    })),
-  }
-  const r = await fetch('/api/studio/campaign/save', { // tiny proxy to attach cookies on server if you prefer
-    method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
-  })
-  if(!r.ok) return alert(await r.text())
-  alert('Saved to backend ✅')
-}
 
+  const onSaveBackend = async () => {
+    if (!data?.campaign) return
+    const payload = {
+      title: data.campaign.campaign_title || topic,
+      overview: data.campaign.overview || '',
+      pillar, language, goal, keywords,
+      posts: (data.campaign.posts||[]).map(p=>({
+        title: p.title||'',
+        image_prompt: p.image_prompt||'',
+        email_subject: p.email?.subject||'',
+        email_body: p.email?.body||'',
+        fb_text: p.social?.facebook?.text||'',
+        ig_text: p.social?.instagram?.text||'',
+        pin_title: p.social?.pinterest?.title||'',
+        pin_desc: p.social?.pinterest?.description||'',
+        cta: p.cta||'',
+        hashtags: p.hashtags||[],
+      })),
+    }
+    const r = await fetch('/api/studio/campaign/save', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+    })
+    if(!r.ok) return alert(await r.text())
+    alert('Saved to backend ✅')
+  }
 
   return (
     <section className="space-y-6">
@@ -244,7 +240,6 @@ export default function CampaignPage() {
         </div>
 
         <div className="md:col-span-3">
-  
           <button
             disabled={loading}
             className="w-full md:w-auto bg-black text-white rounded-lg px-4 py-2 hover:opacity-90 disabled:opacity-60"
@@ -272,10 +267,10 @@ export default function CampaignPage() {
               >
                 📥 Import JSON
               </button>
-              
+
               <input id="importFile" type="file" accept="application/json" hidden
                 onChange={async (e) => {
-                  const f = e.target.files?.[0]; if(!f) return;
+                  const f = (e.target as HTMLInputElement).files?.[0]; if(!f) return;
                   const txt = await f.text(); importC(JSON.parse(txt))
                 }} />
             </div>
@@ -285,9 +280,7 @@ export default function CampaignPage() {
             {data.campaign.posts?.map((p, i) => (
               <div key={i} className="rounded-xl border bg-white p-4 space-y-3">
                 <div className="font-medium">{p.title || `Post ${i+1}`}</div>
-                {p.overview && <div className="text-xs text-gray-500"></div>
-
-                }
+                {p.overview && <div className="text-xs text-gray-500"></div>}
                 <div className="text-sm"><span className="font-semibold">CTA:</span> {p.cta || '—'}</div>
                 <div className="text-xs text-gray-500">{p.hashtags?.join(' ')}</div>
 
@@ -336,3 +329,4 @@ export default function CampaignPage() {
     </section>
   )
 }
+
