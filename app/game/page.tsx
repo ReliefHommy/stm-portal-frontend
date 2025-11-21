@@ -1,5 +1,5 @@
-import { MasonryItem } from "../components/food/FoodMasonryGridComponent"
-import GameMasonryGrid from "../components/game/GameMasonryGrid"
+
+import GameMasonryGrid, { MasonryItem } from "../components/game/GameMasonryGrid"
 import MainNavbar from "../components/hompage/MainNavbar"
 
 

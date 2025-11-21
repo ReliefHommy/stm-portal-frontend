@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import {
-  listCampaigns,
+
   getCampaign,
   saveCampaign,
   importCampaign as importC,
