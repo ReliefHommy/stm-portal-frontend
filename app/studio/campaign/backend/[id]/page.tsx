@@ -43,7 +43,7 @@ export default async function BackendCampaignDetailPage({
 }) {
   let campaign: BackendCampaign
   try {
-    campaign = await apiGet<BackendCampaign>(`/api/campaigns/${params.id}/`)
+    campaign = await apiGet<BackendCampaign>(`/api/studio/campaigns/${params.id}/`)
   } catch (e) {
     return (
       <section className="space-y-4">

@@ -23,7 +23,7 @@ export const dynamic = 'force-dynamic'
 export default async function BackendCampaignListPage() {
   let campaigns: BackendCampaign[] = []
   try {
-    campaigns = await apiGet<BackendCampaign[]>('/api/campaigns/')
+    campaigns = await apiGet<BackendCampaign[]>('/api/studio/campaigns/')
   } catch (e) {
     // if not logged in or error from backend
     return (

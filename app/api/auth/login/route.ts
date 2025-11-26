@@ -1,7 +1,7 @@
 // app/api/auth/login/route.ts
 import { NextResponse } from 'next/server'
 
-const DJANGO = process.env.NEXT_PUBLIC_API_BASE! // http://localhost:8000
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
 
 export async function POST(req: Request) {
   try {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       )
     }
 
-    const r = await fetch(`${DJANGO}/api/token/`, {
+    const r = await fetch(`${API_BASE}/api/token/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),

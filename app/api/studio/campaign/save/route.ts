@@ -1,6 +1,7 @@
+//app/api/studio/campaign/save/route.ts
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-const API = process.env.NEXT_PUBLIC_API_BASE! // http://localhost:8000
+const API = process.env.NEXT_PUBLIC_API_BASE! 
 
 export async function POST(req: Request) {
   const cookieStore = await cookies()
@@ -12,7 +13,7 @@ export async function POST(req: Request) {
 
   const body = await req.text()
 
-  const r = await fetch(`${API}/api/campaigns/`, {
+  const r = await fetch(`${API}/api/studio/campaigns/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

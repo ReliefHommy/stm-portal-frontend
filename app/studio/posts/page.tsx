@@ -19,7 +19,7 @@ export default function PostListPage() {
   useEffect(() => {
     async function load() {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/campaigns-post/`, // ← FIXED
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/campaigns-post/`, // ← FIXED
         { cache: 'no-store' }
       )
       const data = await res.json()
