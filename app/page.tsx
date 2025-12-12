@@ -1,65 +1,43 @@
+import STMMasonryPost, { MasonryPost } from "./components/masonry/STMMasonryPost"
 
+async function getPosts(): Promise<MasonryPost[]> {
+  const res = await fetch(
+    'https://stm-food-backend-production.up.railway.app/api/studio/stm-post/',
+    {
+      // ISR – revalidate every 10 minutes
+      next: { revalidate: 600 },
+    }
+  )
 
-import React from "react";
-import MainNavbar from "./components/hompage/MainNavbar";
-import SubDomainCard from "./components/hompage/SubDomainCard";
-import FoodMarketPlace from "./components/hompage/FoodMarketPlace";
-import GamemarketPlace from "./components/hompage/GameMarketPlace";
-import WellnessMarketPlace from "./components/hompage/WellnessMarketPlace";
-import Footer from "./components/hompage/Footer";
-import Hero from "./components/hompage/Hero";
+  if (!res.ok) {
+    throw new Error('Failed to fetch STM posts')
+  }
 
+  const data = await res.json()
 
+  // 🔁 Map backend → frontend shape
+  return data.map((post: any) => ({
+    id: post.id,
+    title: post.title,
+    excerpt: post.excerpt ?? '',
+    image: post.image, // must be full URL
+    href: `/posts/${post.slug ?? post.id}`,
+  }))
+}
 
-
-
-
-export default function Home() {
-
-  const wellnessImages = [
-    '/pin/01_PIN-Thai Well-Being.png',
-    '/pin/02_PIN-Thai Well-Being.png',
-    '/pin/03_PIN-Thai Well-Being.png',
-
-  ]
-    const foodImages = [
-    '/IG/01-IG__Discover the Flavors.png',
-    '/FB/02-FB__Discover the Flavors.png',
-    '/pin/03-Pin_Discover the Flavors.png',
-
-  ]
-
-      const gameImages = [
-    '/pin/02-Pin_Immersive VR and Tablet.png',
-    '/FB/01-FB - Benchmark.png',
-    '/pin/01-Pin - UNLOCKING.png',
-
-  ]
-
-
-
-
-
-
-
+export default async function HomePage() {
+  const posts = await getPosts()
 
   return (
-    <main className="min-h-screen flex flex-col bg-white">
-    
-     <MainNavbar />
-    <Hero />
-        {/* Pinterest-style content width */}
+    <main className="max-w-7xl mx-auto px-4 py-12">
+      <h2 className="text-2xl font-bold mb-6">
+        Latest Stories
+      </h2>
 
-<div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8"> 
-   
-  <SubDomainCard />
-        <FoodMarketPlace title={"Food Marketplace"} images={foodImages} description={"Authentic Thai ingredients and groceries."} buttonText={"Explore Now"} buttonHref={"/"} />
-      <GamemarketPlace title={"Game Marketplace"} description={"Puzzle & trivia games inspired by Thai culture."} buttonText={"Explore Now"} buttonHref={"/"} images={gameImages} />
-      <WellnessMarketPlace title={"Wellness Marketplace"} description={"Herbal remedies and wellness essentials."} buttonText={"Explore Now"} buttonHref={"/"} images={wellnessImages}/>      
-      
-  </div>
-     
-<Footer />
+      <STMMasonryPost
+        posts={posts}
+        variant="card"
+      />
     </main>
-  );
+  )
 }

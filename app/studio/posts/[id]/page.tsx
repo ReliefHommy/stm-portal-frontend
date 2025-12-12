@@ -28,7 +28,7 @@ export default function PostDetailPage() {
     if (!id) return
 async function load() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/campaigns-post/${id}/`,
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/${id}/`,
     { cache: 'no-store' }
   )
   const data = await res.json()
