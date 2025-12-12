@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Sparkles, BrainCircuit, Workflow, Bot } from "lucide-react";
 import MainNavbar from "@/app/components/hompage/MainNavbar";
+import Footer from "../components/hompage/Footer";
 
 export const metadata: Metadata = {
   title: "Nok in House | AI Studio",
@@ -152,6 +153,7 @@ const AiStudioPage = () => {
           </div>
         </section>
       </div>
+            <Footer />
     </main>
   );
 };

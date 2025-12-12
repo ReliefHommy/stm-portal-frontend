@@ -6,7 +6,7 @@ import React, { Suspense } from 'react'
 import Topbar from '../components/studio/Topbar'
 import Sidebar from '../components/studio/Sidebar'
 import MainNavbar from '../components/hompage/MainNavbar'
-import StudioFooter from '../components/studio/StudioFooter'
+
 
 export default function StudioLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,7 +23,7 @@ export default function StudioLayout({ children }: { children: React.ReactNode }
               {children}
             </main>
           </Suspense>
-           <StudioFooter />
+        
         </div>
       </div>
     </div>

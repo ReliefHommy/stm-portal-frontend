@@ -1,5 +1,6 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 import type { Metadata } from "next";
+import Footer from "../components/hompage/Footer";
 
 export const metadata: Metadata = {
   title: "Partner With Us | STM Marketplace",
@@ -210,6 +211,7 @@ const PartnerPage = () => {
           </div>
         </section>
       </div>
+            <Footer />
     </main>
   );
 };

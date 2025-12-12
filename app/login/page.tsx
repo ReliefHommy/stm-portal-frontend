@@ -18,12 +18,15 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <MainNavbar />
-         <form onSubmit={onSubmit} className="max-w-sm mx-auto p-6 space-y-4">
-      <h1 className="text-xl font-semibold">Login</h1>
-      <input name="email" placeholder="Email" className="w-full border rounded px-3 py-2" />
-      <input type="password" name="password" placeholder="Password" className="w-full border rounded px-3 py-2" />
-      <button className="w-full bg-black text-white rounded px-3 py-2">Login → Studio</button>
-    </form>
+    <div>
+      <form onSubmit={onSubmit} className="max-w-sm mx-auto p-6 space-y-4">
+        <h1 className="text-xl font-semibold">Login</h1>
+        <input name="email" placeholder="Email" className="w-full border rounded px-3 py-2" />
+        <input type="password" name="password" placeholder="Password" className="w-full border rounded px-3 py-2" />
+        <button className="w-full bg-black text-white rounded px-3 py-2">Login → Studio</button>
+      </form>
+    </div>
+
     </main>
      
  

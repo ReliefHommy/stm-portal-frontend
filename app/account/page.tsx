@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MainNavbar from "../components/hompage/MainNavbar";
+import Footer from "../components/hompage/Footer";
 
 export const metadata: Metadata = {
   title: "My Account | STM Marketplace",
@@ -74,7 +75,8 @@ type NavCardProps = {
 
 function NavCard({ title, description, href }: NavCardProps) {
   return (
-    <Link href={href} className="group">
+     <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
+          <Link href={href} className="group">
       <div className="flex h-full flex-col justify-between rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-[2px] hover:shadow-md group-hover:ring-emerald-500/50">
         <div>
           <h2 className="text-base font-semibold text-slate-900">
@@ -89,6 +91,10 @@ function NavCard({ title, description, href }: NavCardProps) {
         </div>
       </div>
     </Link>
+     <Footer />
+
+     </section>
+
   );
 }
 

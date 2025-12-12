@@ -1,6 +1,8 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 
 import type { Metadata } from "next";
+import Footer from "../components/hompage/Footer";
+import StudioFooter from "../components/studio/StudioFooter";
 
 export const metadata: Metadata = {
   title: "About Us | STM Marketplace",
@@ -190,9 +192,12 @@ const AboutPage = () => {
             games can grow together in the EU.
           </p>
         </section>
+        
 
 
       </div>
+      
+      <Footer />
     </main>
   );
 };

@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { PublishButton } from '@/app/components/studio/PublishButton'
 
 interface CampaignPost {
   id: number
@@ -19,7 +20,7 @@ export default function PostListPage() {
   useEffect(() => {
     async function load() {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/campaigns-post/`, // ← FIXED
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/`, // ← FIXED
         { cache: 'no-store' }
       )
       const data = await res.json()
@@ -52,9 +53,19 @@ export default function PostListPage() {
             >
               View details →
             </Link>
+            {/* ⭐ Publish Button STM-post*/}
+  <PublishButton campaignId={p.id} />
+         
           </article>
+
+        
         ))}
+
+      
       </div>
+        {/* ✅ Suspense boundary that wraps all /studio children */}
+        
+        
     </section>
   )
 }

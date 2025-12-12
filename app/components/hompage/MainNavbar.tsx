@@ -16,7 +16,7 @@ export default function MainNavbar() {
     { name: 'About', href: '/about', icon: <InfoIcon size={16} /> },
     { name: 'Join as Partner', href: '/partner', icon: <User size={16} /> },
     { name: 'Contact', href: '/contact', icon: <ContactIcon size={16} /> },
-    { name: 'Ai-Studio', href: '/studio', icon: <WorkflowIcon size={16} /> },
+    { name: 'Ai-Studio', href: '/ai-studio', icon: <WorkflowIcon size={16} /> },
     { name: 'Account', href: '/login', icon: <DoorClosedLocked size={16} /> },
   ];
      const linkClass = (href: string) =>

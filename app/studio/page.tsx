@@ -2,6 +2,7 @@
 
 
 import { apiGet } from "../../lib/fetcher"
+import StudioFooter from "../components/studio/StudioFooter"
 
 
 export default async function StudioDashboard() {
@@ -35,6 +36,7 @@ export default async function StudioDashboard() {
         <div className="text-base">Ready for integrations</div>
       </div>
     </div>
+       <StudioFooter />
     </section>
   )
   

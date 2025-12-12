@@ -1,5 +1,6 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 import type { Metadata } from "next";
+import Footer from "../components/hompage/Footer";
 
 export const metadata: Metadata = {
   title: "Contact Us | STM Marketplace",
@@ -102,6 +103,7 @@ export default function ContactPage() {
           </p>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
