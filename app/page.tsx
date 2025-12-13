@@ -1,6 +1,11 @@
+import Footer from "./components/hompage/Footer"
+import Hero from "./components/hompage/Hero"
+import MainNavbar from "./components/hompage/MainNavbar"
 import STMMasonryPost, { MasonryPost } from "./components/masonry/STMMasonryPost"
 
-async function getPosts(): Promise<MasonryPost[]> {
+async function getPosts(): Promise<MasonryPost[]
+
+> {
   const res = await fetch(
     'https://stm-food-backend-production.up.railway.app/api/studio/stm-post/',
     {
@@ -14,6 +19,8 @@ async function getPosts(): Promise<MasonryPost[]> {
   }
 
   const data = await res.json()
+
+
 
   // 🔁 Map backend → frontend shape
   return data.map((post: any) => ({
@@ -29,15 +36,20 @@ export default async function HomePage() {
   const posts = await getPosts()
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-2xl font-bold mb-6">
-        Latest Stories
-      </h2>
-
-      <STMMasonryPost
-        posts={posts}
-        variant="card"
-      />
+    <main className="min-h-screen flex flex-col bg-white">
+      <MainNavbar />
+      <Hero />
+     
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <h2 className="text-2xl font-bold mb-6">
+          Latest Stories
+        </h2>
+        <STMMasonryPost
+          posts={posts}
+          variant="card" />
+      </div>
+      
+      <Footer />
     </main>
   )
 }

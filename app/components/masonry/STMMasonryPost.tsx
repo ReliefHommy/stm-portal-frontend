@@ -13,17 +13,18 @@ export type MasonryPost = {
 
 interface PostMasonryProps {
   posts: MasonryPost[]
-  /** 
-   * "card"  = image + text (like first screenshot)
-   * "image" = image-only grid (like second screenshot)
-   */
   variant?: 'card' | 'image'
 }
 
-export default function STMMasonryPost({
-  posts,
-  variant = 'card',
-}: PostMasonryProps) {
+export default function STMMasonryPost({ posts, variant = 'card' }: PostMasonryProps) {
+  if (!posts || posts.length === 0) {
+    return (
+      <div className="rounded-2xl border bg-white p-6 text-sm text-slate-600">
+        No stories yet. Publish your first STM post and it will appear here.
+      </div>
+    )
+  }
+
   return (
     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
       {posts.map((post) => (
@@ -32,7 +33,6 @@ export default function STMMasonryPost({
           className="break-inside-avoid overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-shadow"
         >
           <Link href={post.href} className="block">
-            {/* IMAGE */}
             <div className="relative w-full">
               <Image
                 src={post.image}
@@ -44,7 +44,6 @@ export default function STMMasonryPost({
               />
             </div>
 
-            {/* TEXT CARD (only for 'card' variant) */}
             {variant === 'card' && (
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
