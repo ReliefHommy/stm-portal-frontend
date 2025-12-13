@@ -1,6 +1,9 @@
+import Link from 'next/link'
+
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 import type { Metadata } from "next";
 import Footer from "../components/hompage/Footer";
+
 
 export const metadata: Metadata = {
   title: "Partner With Us | STM Marketplace",
@@ -73,15 +76,15 @@ const PartnerPage = () => {
             </div>
           </div>
 
-          <div className="pt-2">
-            {/* Adjust href to your real route */}
-            <a
-              href="/creator"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
-            >
-              Explore Food Partner Program
-            </a>
-          </div>
+
+  <div className="pt-2">
+  <Link
+    href="/creator"
+    className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+  >
+    Explore Food Partner Program
+  </Link>
+</div>
         </section>
 
         {/* Wellness Marketplace Section */}
@@ -127,12 +130,12 @@ const PartnerPage = () => {
 
           <div className="pt-2">
             {/* Adjust href to your real route */}
-            <a
+            <Link
               href="/partner/wellness"
               className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Explore Wellness Partner Program
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -180,12 +183,12 @@ const PartnerPage = () => {
 
           <div className="pt-2">
             {/* Adjust href to your real route */}
-            <a
+            <Link
               href="/partner/games"
               className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Explore Games Partner Program
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -202,12 +205,12 @@ const PartnerPage = () => {
           </p>
           <div className="mt-6">
             {/* Adjust href to your real route */}
-            <a
+            <Link
               href="/partner/apply"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50"
             >
               Apply Now to Become an STM Partner
-            </a>
+            </Link>
           </div>
         </section>
       </div>
