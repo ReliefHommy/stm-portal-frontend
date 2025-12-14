@@ -8,17 +8,24 @@ type PublishProps = {
 export function PublishButton({ campaignId }: PublishProps) {
   async function publish() {
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE
-    const url = `${API_BASE}/api/studio/publish-from-campaign/${campaignId}/`
+     if (!API_BASE) {
+      alert('Missing NEXT_PUBLIC_API_BASE')
+      return
+    }
+    const url = `${API_BASE}/api/studio/${campaignId}/`
 
     const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({}) // no body required for now
     })
 
     if (!res.ok) {
+      const text = await res.text()
+      console.error('Publish failed:', res.status, text, url)
       alert('Publish failed: ' + res.status)
       return
     }
@@ -37,3 +44,4 @@ export function PublishButton({ campaignId }: PublishProps) {
     </button>
   )
 }
+
