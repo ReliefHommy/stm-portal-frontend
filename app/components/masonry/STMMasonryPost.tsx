@@ -16,6 +16,7 @@ interface PostMasonryProps {
   variant?: 'card' | 'image'
 }
 
+
 export default function STMMasonryPost({ posts, variant = 'card' }: PostMasonryProps) {
   if (!posts || posts.length === 0) {
     return (
@@ -34,14 +35,25 @@ export default function STMMasonryPost({ posts, variant = 'card' }: PostMasonryP
         >
           <Link href={post.href} className="block">
             <div className="relative w-full">
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={800}
-                height={600}
-                loading="lazy"
-                className="w-full h-auto object-cover"
-              />
+              {post.image ? (
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  className="w-full h-auto object-cover"
+                />
+              ) : (
+                <div className="aspect-[4/3] w-full bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-10 h-10">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7l1.5-2h5L16 7" />
+                    <circle cx="12" cy="13" r="3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div className="text-xs mt-2">No image</div>
+                </div>
+              )}
             </div>
 
             {variant === 'card' && (

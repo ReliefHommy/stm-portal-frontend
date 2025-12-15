@@ -27,7 +27,7 @@ async function getPosts(): Promise<MasonryPost[]
     id: post.id,
     title: post.title,
     excerpt: post.excerpt ?? '',
-    image: post.image, // must be full URL
+    image: post.image_url || '',
     href: `/posts/${post.slug ?? post.id}`,
   }))
 }
