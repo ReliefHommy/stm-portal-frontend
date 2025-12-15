@@ -1,3 +1,4 @@
+import { Link } from "lucide-react"
 import Footer from "./components/hompage/Footer"
 import Hero from "./components/hompage/Hero"
 import MainNavbar from "./components/hompage/MainNavbar"
@@ -44,10 +45,16 @@ export default async function HomePage() {
         <h2 className="text-2xl font-bold mb-6">
           Latest Stories
         </h2>
-        <STMMasonryPost
+    
+      </div>
+         <Link
+              href={`/api/studio/stm-post/${posts}`}
+           
+            >
+             <STMMasonryPost
           posts={posts}
           variant="card" />
-      </div>
+            </Link>
       
       <Footer />
     </main>
