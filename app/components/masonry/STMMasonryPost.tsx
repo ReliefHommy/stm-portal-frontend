@@ -13,38 +13,38 @@ export type MasonryPost = {
 
 interface PostMasonryProps {
   posts: MasonryPost[]
+  /** 
+   * "card"  = image + text (like first screenshot)
+   * "image" = image-only grid (like second screenshot)
+   */
   variant?: 'card' | 'image'
 }
 
-
-export default function STMMasonryPost({ 
-  posts, variant = 'card',
- }: PostMasonryProps) {
-    return (
+export default function PostMasonry({
+  posts,
+  variant = 'card',
+}: PostMasonryProps) {
+  return (
     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
       {posts.map((post) => (
         <article
-          key={`${post.id}-${post.href}`}
+          key={post.id}
           className="break-inside-avoid overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-shadow"
         >
           <Link href={post.href} className="block">
             {/* IMAGE */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
-              {post.image ? (
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-slate-100 text-slate-400">
-                  No image
-                </div>
-              )}
+            <div className="relative w-full">
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={800}
+                height={600}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
             </div>
 
-            {/* TEXT */}
+            {/* TEXT CARD (only for 'card' variant) */}
             {variant === 'card' && (
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">
@@ -62,11 +62,4 @@ export default function STMMasonryPost({
       ))}
     </div>
   )
-  
-
-
-
-
-
-
 }

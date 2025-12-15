@@ -3,9 +3,7 @@ import Hero from "./components/hompage/Hero"
 import MainNavbar from "./components/hompage/MainNavbar"
 import STMMasonryPost, { MasonryPost } from "./components/masonry/STMMasonryPost"
 
-async function getPosts(): Promise<MasonryPost[]
-
-> {
+async function getPosts(): Promise<MasonryPost[]> {
   const res = await fetch(
     'https://stm-food-backend-production.up.railway.app/api/studio/stm-post/',
     {
@@ -22,15 +20,20 @@ async function getPosts(): Promise<MasonryPost[]
 
 
 
-  // 🔁 Map backend → frontend shape
-  return data.map((post: any) => ({
-    id: post.id,
-    title: post.title,
-    excerpt: post.excerpt ?? '',
-    image: post.image_url || '',
-    href: `/posts/${post.slug ?? post.id}`,
-  }))
-}
+    // 🔁 Map backend → frontend shape (produce URL-safe slug)
+    return data.map((post: any) => {
+      const raw = String(post.slug ?? post.id)
+      const safe = encodeURIComponent(raw.replace(/[,\s]+$/g, "")) // trims trailing comma/spaces
+
+      return {
+        id: post.id,
+        title: post.title,
+        excerpt: post.excerpt ?? '',
+        image: post.image_url || '',
+        href: `/${safe}`,
+      }
+    })
+  }
 
 export default async function HomePage() {
   const posts = await getPosts()
