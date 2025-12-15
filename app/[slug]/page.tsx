@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import MainNavbar from "../components/hompage/MainNavbar";
+import Hero from "../components/hompage/Hero";
+import Footer from "../components/hompage/Footer";
+
 
 const API = "https://stm-food-backend-production.up.railway.app";
 
@@ -29,22 +33,28 @@ export default async function PostDetail({ params }: any) {
   if (!post) notFound();
 
   return (
-    <div className="px-4 py-10 max-w-3xl mx-auto">
-      {post.image_url ? (
-        <Image
-          src={post.image_url}
-          alt={post.title ?? "Post image"}
-          width={1200}
-          height={900}
-          className="w-full rounded-xl mb-6"
-        />
-      ) : null}
+     <><main className="min-h-screen flex flex-col bg-white">
+        <MainNavbar />
+            <Hero />
+       <div className="px-4 py-10 max-w-3xl mx-auto">
+        {post.image_url ? (
+          <Image
+            src={post.image_url}
+            alt={post.title ?? "Post image"}
+            width={800}
+            height={600}
+            className="w-full rounded-xl mb-6" />
+        ) : null}
 
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
 
-      <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line">
-        {post.overview ?? post.excerpt ?? ""}
-      </p>
-    </div>
+        <p className="text-lg text-slate-700 leading-relaxed whitespace-pre-line">
+          {post.overview ?? post.excerpt ?? ""}
+        </p>
+      </div>
+         <Footer />
+
+    </main>
+   </>
   );
 }

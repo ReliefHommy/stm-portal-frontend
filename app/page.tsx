@@ -1,5 +1,6 @@
 import Footer from "./components/hompage/Footer"
 import Hero from "./components/hompage/Hero"
+
 import MainNavbar from "./components/hompage/MainNavbar"
 import STMMasonryPost, { MasonryPost } from "./components/masonry/STMMasonryPost"
 
