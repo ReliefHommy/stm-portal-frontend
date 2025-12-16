@@ -3,18 +3,18 @@ import { notFound } from "next/navigation";
 
 import Link from "next/link";
 import MainNavbar from "@/app/components/hompage/MainNavbar";
-import Hero from "@/app/components/hompage/Hero";
 import Footer from "@/app/components/hompage/Footer";
+import { IdCardIcon } from "lucide-react";
 
 
 const API = "https://stm-food-backend-production.up.railway.app";
 
-async function getPost(rawId: string) {
-  const id = decodeURIComponent(rawId).replace(/[,\s]+$/g, ""); // remove trailing comma
+async function getPost(rawSlug: string) {
+  const id = decodeURIComponent(rawSlug).replace(/[,\s]+$/g, ""); // remove trailing comma
 
   // 1) if numeric → fetch by pk
   if (/^\d+$/.test(id)) {
-    const res = await fetch(`${API}/api/studio/stm-post/${id}/`, { cache: "no-store" });
+    const res = await fetch(`${API}/api/studio/stm-post/${IdCardIcon}/`, { cache: "no-store" });
     if (!res.ok) return null;
     return res.json();
   }
@@ -44,7 +44,7 @@ export default async function PostDetail({ params }: any) {
     return (
      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         <MainNavbar />
-            <Hero />
+         
                {/* Top bar */}
         <div className="border-b bg-white/70 backdrop-blur">
         <div className="mx-auto max-w-4xl px-4 py-4 flex items-center justify-between">
@@ -138,7 +138,7 @@ export default async function PostDetail({ params }: any) {
             {/* Footer CTA */}
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between border-t pt-6">
               <Link
-                href="/"
+                href="/stm-posts"
                 className="text-sm font-medium text-slate-700 hover:text-slate-900"
               >
                 ← Back to latest stories

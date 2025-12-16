@@ -1,5 +1,4 @@
 import Footer from "../components/hompage/Footer"
-import Hero from "../components/hompage/Hero"
 import MainNavbar from "../components/hompage/MainNavbar"
 import STMMasonryPost, { MasonryPost } from "../components/masonry/STMMasonryPost"
 
@@ -30,7 +29,7 @@ async function getPosts(): Promise<MasonryPost[]> {
         title: post.title,
         excerpt: post.excerpt ?? '',
         image: post.image_url || '',
-        href: `/stm-posts/${safe}`,
+        href: `/stm-posts/${encodeURIComponent(safe)}`,
       }
     })
   }
@@ -41,7 +40,7 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <MainNavbar />
-      <Hero />
+
      
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold mb-6">
