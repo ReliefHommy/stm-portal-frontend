@@ -149,7 +149,7 @@ export default async function PostDetail({ params }: any) {
           <div className="p-6 sm:p-10">
             <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24 prose-a:text-slate-900">
               <p className="whitespace-pre-line leading-relaxed text-slate-700">
-                {post.overview}
+                {post.excerpt}
               </p>
             </div>
 
