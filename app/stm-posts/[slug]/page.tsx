@@ -58,14 +58,14 @@ export default async function PostDetail({
         <div className="border-b bg-white/70 backdrop-blur">
         <div className="mx-auto max-w-4xl px-4 py-4 flex items-center justify-between">
           <Link
-            href="/"
+            href="/stm-posts"
             className="text-sm font-medium text-slate-700 hover:text-slate-900 inline-flex items-center gap-2"
           >
             <span aria-hidden>←</span> Back to posts
           </Link>
           <div className="flex items-center gap-2">
              <Link
-              href="/studio/posts"
+              href="/stm-posts"
               className="text-sm text-slate-600 hover:text-slate-900"
             >
               Studio
@@ -109,28 +109,8 @@ export default async function PostDetail({
           </div>
         )}
 
-        {/* Hero image */}
-        {post.image_url ? (
-          <div className="relative overflow-hidden rounded-3xl border bg-slate-100 shadow-sm">
-            <div className="relative aspect-[16/9]">
-              <Image
-                src={post.image_url}
-                alt={post.title ?? "Post image"}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 768px"
-                priority
-              />
-            </div>
+    
 
-            {/* soft overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-          </div>
-        ) : (
-          <div className="rounded-3xl border bg-slate-50 p-10 text-slate-500">
-            No cover image.
-          </div>
-        )}
 
         {/* Body */}
         <section

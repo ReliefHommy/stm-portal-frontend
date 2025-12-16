@@ -45,7 +45,7 @@ export default function Hero() {
           {currentSlide.title}
         </h1>
         <a
-          href="#explore"
+          href="/stm-posts"
           className="bg-black text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition"
         >
           {currentSlide.buttonText}
