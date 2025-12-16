@@ -8,8 +8,8 @@ import Link from "next/link";
 
 const API = "https://stm-food-backend-production.up.railway.app";
 
-async function getPost(Id: string) {
-  const id = decodeURIComponent(Id).replace(/[,\s]+$/g, ""); // remove trailing comma
+async function getPost(rawId: string) {
+  const id = decodeURIComponent(rawId).replace(/[,\s]+$/g, ""); // remove trailing comma
 
   // 1) if numeric → fetch by pk
   if (/^\d+$/.test(id)) {
@@ -23,25 +23,22 @@ async function getPost(Id: string) {
     cache: "no-store",
   });
 
-   if (!res.ok) throw new Error("Failed to fetch post")
-  return res.json()
+if (!res.ok) return null;
+
+  const data = await res.json();
+  return Array.isArray(data) ? data[0] ?? null : data;
 
 
 }
-function formatDate(input?: string) {
-  if (!input) return null
-  const d = new Date(input)
-  if (isNaN(d.getTime())) return null
-  return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
-}
+
 
 
 export default async function PostDetail({ params }: any) {
   const post = await getPost(params.id);
-  const dateLabel = formatDate(post.created_at || post.updated_at)
-  const readTime =
-    post.overview ? `${Math.max(2, Math.round(post.overview.split(/\s+/).length / 180))} min read` : null
+  if (!post) notFound();
   
+  const dateLabel = post.created_at ? new Date(post.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+  const readTime = post.read_time || null;
   
     return (
      <><main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -127,7 +124,7 @@ export default async function PostDetail({ params }: any) {
             <div className="relative aspect-[16/9]">
               <Image
                 src={post.image_url}
-                alt={post.title}
+                alt={post.title ?? "Post image"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 768px"
@@ -174,6 +171,7 @@ export default async function PostDetail({ params }: any) {
 
      </article>
        
+
 
 
          <Footer />
