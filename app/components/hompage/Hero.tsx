@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const slides = [
@@ -44,12 +45,12 @@ export default function Hero() {
         <h1 className="text-4xl md:text-6xl font-extrabold text-black drop-shadow-md mb-6">
           {currentSlide.title}
         </h1>
-        <a
+        <Link
           href="/stm-posts"
           className="bg-black text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition"
         >
           {currentSlide.buttonText}
-        </a>
+        </Link>
       </div>
 
       {/* Slide Indicators */}
