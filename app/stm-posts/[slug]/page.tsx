@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 import Footer from "@/app/components/hompage/Footer";
-import { IdCardIcon } from "lucide-react";
+
 
 
 const API = "https://stm-food-backend-production.up.railway.app";
@@ -12,34 +12,43 @@ const API = "https://stm-food-backend-production.up.railway.app";
 async function getPost(rawSlug: string) {
   const id = decodeURIComponent(rawSlug).replace(/[,\s]+$/g, ""); // remove trailing comma
 
-  // 1) if numeric → fetch by pk
+   // 1) numeric → fetch by pk
   if (/^\d+$/.test(id)) {
-    const res = await fetch(`${API}/api/studio/stm-post/${IdCardIcon}/`, { cache: "no-store" });
-    if (!res.ok) return null;
-    return res.json();
+    const res = await fetch(
+      `${API}/api/studio/stm-post/${id}/`,
+      { cache: "no-store" }
+    )
+    if (!res.ok) return null
+    return res.json()
   }
 
-  // 2) if slug → fetch via list filter (?slug=...)
-  const res = await fetch(`${API}/api/studio/stm-post/?slug=${encodeURIComponent(id)}`, {
-    cache: "no-store",
-  });
 
-if (!res.ok) return null;
-
-  const data = await res.json();
-  return Array.isArray(data) ? data[0] ?? null : data;
-
-
+ // 2) slug → fetch via DRF action
+  const res = await fetch(
+    `${API}/api/studio/stm-post/by-slug/${encodeURIComponent(id)}/`,
+    { cache: "no-store" }
+  )
+  if (!res.ok) return null
+  return res.json()
 }
 
 
 
-export default async function PostDetail({ params }: any) {
-  const post = await getPost(params.id);
-  if (!post) notFound();
-  
-  const dateLabel = post.created_at ? new Date(post.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
-  const readTime = post.read_time || null;
+export default async function PostDetail({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const post = await getPost(params.slug)
+  if (!post) notFound()
+
+  const dateLabel = post.created_at
+    ? new Date(post.created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null
   
     return (
      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">

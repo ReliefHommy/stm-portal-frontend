@@ -29,7 +29,7 @@ async function getPosts(): Promise<MasonryPost[]> {
         title: post.title,
         excerpt: post.excerpt ?? '',
         image: post.image_url || '',
-        href: `/stm-posts/${encodeURIComponent(safe)}`,
+        href: `/stm-posts/${safe}`,
       }
     })
   }
