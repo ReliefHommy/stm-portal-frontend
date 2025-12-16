@@ -8,8 +8,7 @@ async function getPosts(): Promise<MasonryPost[]> {
   const res = await fetch(
     'https://stm-food-backend-production.up.railway.app/api/studio/stm-post/',
     {
-      // ISR – revalidate every 10 minutes
-      next: { revalidate: 600 },
+    cache: 'no-store'
     }
   )
 

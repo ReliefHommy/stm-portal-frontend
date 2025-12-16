@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import MainNavbar from "../components/hompage/MainNavbar";
-import Hero from "../components/hompage/Hero";
-import Footer from "../components/hompage/Footer";
+
 import Link from "next/link";
+import MainNavbar from "@/app/components/hompage/MainNavbar";
+import Hero from "@/app/components/hompage/Hero";
+import Footer from "@/app/components/hompage/Footer";
 
 
 const API = "https://stm-food-backend-production.up.railway.app";
@@ -41,7 +42,7 @@ export default async function PostDetail({ params }: any) {
   const readTime = post.read_time || null;
   
     return (
-     <><main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         <MainNavbar />
             <Hero />
                {/* Top bar */}
@@ -174,9 +175,8 @@ export default async function PostDetail({ params }: any) {
 
 
 
-         <Footer />
+       <Footer />
 
-    </main>
-   </>
+  </main>
   );
 }
