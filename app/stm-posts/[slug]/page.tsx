@@ -79,45 +79,26 @@ export default async function PostDetail({ params }: any) {
             {post.title}
           </h1>
 
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
-            {dateLabel && <span>{dateLabel}</span>}
-            {readTime && (
-              <>
-                <span className="text-slate-300">•</span>
-                <span>{readTime}</span>
-              </>
-            )}
-            {post.pillar && (
-              <>
-                <span className="text-slate-300">•</span>
-                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-700">
-                  {post.pillar}
-                </span>
-              </>
-            )}
-          </div>
+          {dateLabel && <div className="mt-3 text-sm text-slate-600">{dateLabel}</div>}
+        
 
-          {/* Actions */}
-          <div className="mt-5 flex flex-wrap gap-2">
-            <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                `https://www.somtammarket.com/${params.id}`
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:shadow transition"
-            >
-              Share
-            </a>
 
-            <a
-              href="#content"
-              className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800 transition"
-            >
-              Read
-            </a>
-          </div>
         </header>
+           {/* Post image */}
+        {post.image_url && (
+          <div className="relative overflow-hidden rounded-3xl border bg-slate-100 shadow-sm">
+            <div className="relative aspect-[16/9]">
+              <Image
+                src={post.image_url}
+                alt={post.title ?? "Post image"}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
+              />
+            </div>
+          </div>
+        )}
 
         {/* Hero image */}
         {post.image_url ? (
