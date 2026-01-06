@@ -54,7 +54,7 @@ export default async function PostDetail({
      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         <MainNavbar />
          
-               {/* Top bar */}
+               {/* Top Navbar */}
         <div className="border-b bg-white/70 backdrop-blur">
         <div className="mx-auto max-w-4xl px-4 py-4 flex items-center justify-between">
           <Link
@@ -112,33 +112,51 @@ export default async function PostDetail({
     
 
 
-        {/* Body */}
-        <section
-          id="content"
-          className="mt-10 rounded-3xl border bg-white shadow-sm"
-        >
-          <div className="p-6 sm:p-10">
-            <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24 prose-a:text-slate-900">
-              <p className="whitespace-pre-line leading-relaxed text-slate-700">
-                {post.excerpt}
-              </p>
-            </div>
+{/* Body */}
+<section
+  id="content"
+  className="mt-10 rounded-3xl border bg-white shadow-sm"
+>
+  <div className="p-6 sm:p-10">
+    <div className="prose prose-slate max-w-none
+                    prose-headings:scroll-mt-24
+                    prose-h2:mt-10 prose-h3:mt-8
+                    prose-p:leading-relaxed
+                    prose-a:text-slate-900 prose-a:font-medium
+                    prose-strong:text-slate-900">
 
-            {/* Footer CTA */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between border-t pt-6">
-              <Link
-                href="/stm-posts"
-                className="text-sm font-medium text-slate-700 hover:text-slate-900"
-              >
-                ← Back to latest stories
-              </Link>
+      {/* Excerpt */}
+      {post.excerpt && (
+        <p className="whitespace-pre-line text-lg text-slate-700">
+          {post.excerpt}
+        </p>
+      )}
 
-              <div className="text-xs text-slate-500">
-                Published via STM Studio
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Body */}
+      {post.body && (
+        <div className="mt-8 whitespace-pre-line text-slate-800">
+          {post.body}
+        </div>
+      )}
+
+    </div>
+
+    {/* Footer CTA */}
+    <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between border-t pt-6">
+      <Link
+        href="/stm-posts"
+        className="text-sm font-medium text-slate-700 hover:text-slate-900"
+      >
+        ← Back to latest stories
+      </Link>
+
+      <div className="text-xs text-slate-500">
+        Published via STM Studio
+      </div>
+    </div>
+  </div>
+</section>
+
 
      </article>
        
