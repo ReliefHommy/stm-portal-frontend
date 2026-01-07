@@ -33,15 +33,14 @@ export default function PostMasonry({
         >
           <Link href={post.href} className="block">
             {/* IMAGE */}
-            <div className="relative w-full">
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={800}
-                height={600}
-                loading="lazy"
-                className="w-full h-auto object-cover"
-              />
+            <div className="relative w-full aspect-[4/5] overflow-hidden bg-slate-100">
+                <Image
+    src={post.image}
+    alt={post.title}
+    fill
+    className="object-cover"
+    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+  />
             </div>
 
             {/* TEXT CARD (only for 'card' variant) */}

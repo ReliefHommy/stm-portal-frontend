@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
 import Link from "next/link";
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 import Footer from "@/app/components/hompage/Footer";
@@ -32,6 +31,8 @@ async function getPost(rawSlug: string) {
   return res.json()
 }
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 
 export default async function PostDetail({
@@ -127,9 +128,11 @@ export default async function PostDetail({
 
       {/* Excerpt */}
       {post.excerpt && (
-        <p className="whitespace-pre-line text-lg text-slate-700">
-          {post.excerpt}
-        </p>
+      <div className="mt-6 rounded-2xl bg-slate-50 px-5 py-4 border-l-4 border-emerald-400">
+    <p className="whitespace-pre-line text-lg leading-relaxed text-slate-700 font-medium">
+      {post.excerpt}
+    </p>
+  </div>
       )}
 
       {/* Body */}
