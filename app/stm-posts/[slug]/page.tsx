@@ -6,7 +6,7 @@ import Footer from "@/app/components/hompage/Footer";
 
 
 
-const API = "https://stm-food-backend-production.up.railway.app";
+const API = "https://api.somtammarket.com";
 
 async function getPost(rawSlug: string) {
   const id = decodeURIComponent(rawSlug).replace(/[,\s]+$/g, ""); // remove trailing comma

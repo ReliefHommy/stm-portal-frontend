@@ -5,7 +5,7 @@ import STMMasonryPost, { MasonryPost } from "../components/masonry/STMMasonryPos
 
 async function getPosts(): Promise<MasonryPost[]> {
   const res = await fetch(
-    'https://stm-food-backend-production.up.railway.app/api/studio/stm-post/',
+    'https://api.somtammarket.com/api/studio/stm-post/',
     {
     cache: 'no-store'
     }
