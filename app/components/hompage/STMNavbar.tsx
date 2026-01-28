@@ -5,18 +5,21 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
-import { Menu, X, Home,  User,  } from 'lucide-react'; // optional: use lucide icons
+import { Menu, X, Home, InfoIcon, User, ContactIcon, DoorOpenIcon, DoorClosedLocked, WorkflowIcon, } from 'lucide-react'; // optional: use lucide icons
 
 
 
-export default function MainNavbar() {
+export default function STMNavbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
      const navItems = [
     { name: 'Home', href: '/', icon: <Home size={16} /> },
+    { name: 'About', href: '/about', icon: <InfoIcon size={16} /> },
     { name: 'Join as Collaborator', href: '/collaborator', icon: <User size={16} /> },
-
-   ];
+    { name: 'Contact', href: '/contact', icon: <ContactIcon size={16} /> },
+    { name: 'Ai-Studio', href: '/ai-studio', icon: <WorkflowIcon size={16} /> },
+    { name: 'Account', href: '/login', icon: <DoorClosedLocked size={16} /> },
+  ];
      const linkClass = (href: string) =>
     `flex items-center gap-1 hover:text-indigo-500 transition ${
       pathname === href ? 'text-indigo-800 font-semibold' : 'text-gray-800'

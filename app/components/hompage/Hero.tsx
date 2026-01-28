@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link'
 
 
 
@@ -25,10 +26,17 @@ export default function HeroSociety() {
     </p>
 
     {/* CTA Button Group */}
+
     <div className="flex flex-col sm:flex-row gap-4">
-      <button className="px-8 py-4 bg-indigo-900 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 hover:scale-105 transition-all duration-300">
-        Get it on Google Play
-      </button>
+
+                  <Link
+              href="/collaborator"
+              className="px-8 py-4 bg-indigo-900 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 hover:scale-105 transition-all duration-300"
+            >
+              Get it on Google Play
+            </Link>
+      
+     
       
       <button className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-indigo-900 text-blue-900 font-bold rounded-full hover:bg-white transition-all duration-300">
         Explore the Map
