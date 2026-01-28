@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import { Menu, X, Home, InfoIcon, User, ContactIcon, DoorOpenIcon, DoorClosedLocked, WorkflowIcon, } from 'lucide-react'; // optional: use lucide icons
 
@@ -20,17 +21,23 @@ export default function MainNavbar() {
     { name: 'Account', href: '/login', icon: <DoorClosedLocked size={16} /> },
   ];
      const linkClass = (href: string) =>
-    `flex items-center gap-1 hover:text-orange-300 transition ${
-      pathname === href ? 'text-orange-300 font-semibold' : 'text-gray-400'
+    `flex items-center gap-1 hover:text-indigo-500 transition ${
+      pathname === href ? 'text-indigo-800 font-semibold' : 'text-gray-800'
     }`;
 
 
   return (
-    <nav className="bg-black shadow-md sticky top-0 z-50">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Left: Logo */}
-        <Link href="/" className="text-2xl font-extrabold text-white tracking-tight">
-          STM
+        <Link href="/" className="logo">
+           <Image
+              src="/logo_red.png"
+              alt="Somtam Society"
+              width={80}
+              height={80}
+              priority
+            />
         </Link>
           {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 text-sm-medium">

@@ -21,7 +21,7 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="font-semibold">Contact</h4>
-          <p className="text-sm mt-2">📧 hello@somtammarketplace.com</p>
+          <p className="text-sm mt-2">📧 admin@somtammarket.com</p>
           <p className="text-sm">📍 Örebro, Sweden</p>
         </div>
       </div>

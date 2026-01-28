@@ -1,69 +1,41 @@
 'use client';
 
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
-const slides = [
-  {
-    id: 1,
-    image: '/hero_slide-1.png',
-    title: 'Thai Society in Europe',
-    buttonText: 'Explore Now',
-  },
-  {
-    id: 2,
-    image: '/hero_slide-2.png',
-    title: 'Discover Thai Wellness & Lifestyle',
-    buttonText: 'Join the Movement',
-  },
-];
 
-export default function Hero() {
-  const [current, setCurrent] = useState(0);
 
-  // Auto-slide every 6 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
 
-    return () => clearInterval(interval);
-  }, []);
+export default function HeroSociety() {
 
-  const currentSlide = slides[current];
+
+ 
 
   return (
-    <section
-      className="relative w-full h-[90vh] bg-cover bg-center transition-all duration-700"
-      style={{ backgroundImage: `url('${currentSlide.image}')` }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20 z-0" />
+<section
+  className="relative w-full h-[120vh] bg-cover bg-center transition-all duration-700"
+  style={{ backgroundImage: "url('/wat-thai2.png')" }}
+>
+  <div className="absolute inset-0 bg-white bg-opacity-5 flex flex-col justify-start items-center text-center px-4 pt-24 md:pt-32">
+    
+    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-indigo-700 mb-4 drop-shadow-sm">
+      Your Gateway to the Thai Community in Europe
+    </h1>
+    
+    <p className="text-lg md:text-xl text-gray-800 mb-10 max-w-2xl font-medium">
+      Connecting Thai expatriates and enthusiasts across Europe through events, resources, and support.
+    </p>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-black drop-shadow-md mb-6">
-          {currentSlide.title}
-        </h1>
-        <Link
-          href="/stm-posts"
-          className="bg-black text-white px-6 py-3 rounded-lg shadow hover:bg-orange-600 transition"
-        >
-          {currentSlide.buttonText}
-        </Link>
-      </div>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        {slides.map((_, i) => (
-          <span
-            key={i}
-            className={`w-3 h-3 rounded-full ${
-              i === current ? 'bg-white' : 'bg-white/40'
-            } transition`}
-          />
-        ))}
-      </div>
-    </section>
+    {/* CTA Button Group */}
+    <div className="flex flex-col sm:flex-row gap-4">
+      <button className="px-8 py-4 bg-indigo-900 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 hover:scale-105 transition-all duration-300">
+        Get it on Google Play
+      </button>
+      
+      <button className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-indigo-900 text-blue-900 font-bold rounded-full hover:bg-white transition-all duration-300">
+        Explore the Map
+      </button>
+    </div>
+      
+  </div>
+</section>
   );
 }
