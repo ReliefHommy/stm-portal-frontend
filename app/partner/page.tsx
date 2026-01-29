@@ -79,7 +79,7 @@ const PartnerPage = () => {
 
   <div className="pt-2">
   <Link
-    href="/creator"
+    href="https://food.somtammarket.com/"
     className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
   >
     Explore Food Partner Program
@@ -131,7 +131,7 @@ const PartnerPage = () => {
           <div className="pt-2">
             {/* Adjust href to your real route */}
             <Link
-              href="/partner/wellness"
+              href="https://admin.somtammarket.com/"
               className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Explore Wellness Partner Program
@@ -184,7 +184,7 @@ const PartnerPage = () => {
           <div className="pt-2">
             {/* Adjust href to your real route */}
             <Link
-              href="/partner/games"
+              href="https://admin.somtammarket.com/"
               className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
             >
               Explore Games Partner Program
