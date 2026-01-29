@@ -32,7 +32,7 @@ export default function FooterSociety() {
             <ul className="space-y-2">
               <li>
                 {/* This is the critical link for your Google Play Console fix */}
-                <Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors font-medium">
+                <Link href="/privacy" className="text-gray-600 hover:text-blue-900 transition-colors font-medium">
                   Privacy Policy
                 </Link>
               </li>
