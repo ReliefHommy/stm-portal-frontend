@@ -1,6 +1,8 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
-import { Table } from "lucide-react";
 import type { Metadata } from "next";
+import FooterSociety from "../components/hompage/FooterSociety";
+import Hero from "../components/hompage/Hero";
+
 
 
 
@@ -12,9 +14,12 @@ export const metadata: Metadata = {
 
 const PrivacyPolicyPage = () => {
   return (
+    
     <main className="min-h-screen bg-slate-50 text-slate-900">
         
-     
+      <MainNavbar/>
+         <Hero/>
+
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-10 px-4 py-16 md:px-6 lg:px-8">
         {/* Page Header */}
         <header className="space-y-3">
@@ -428,7 +433,7 @@ If you have any questions about this Privacy Policy or your data:📧 admin@somt
 
       </div>
       
-     
+     <FooterSociety/>
     </main>
   );
 };

@@ -21,7 +21,6 @@ export default function FooterSociety() {
             <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors">Home</Link></li>
-              <li><Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors">Temple Map</Link></li>
               <li><Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors">Events</Link></li>
             </ul>
           </div>
@@ -36,7 +35,7 @@ export default function FooterSociety() {
                   Privacy Policy
                 </Link>
               </li>
-              <li><Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors">Terms of Service</Link></li>
+           
             </ul>
           </div>
         </div>
@@ -50,6 +49,7 @@ export default function FooterSociety() {
           </div>
         </div>
       </div>
+      
     </footer>
   );
 }

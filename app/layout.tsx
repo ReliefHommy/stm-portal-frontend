@@ -1,8 +1,7 @@
 //app/layout.tsx
 
 
-import FooterSociety from './components/hompage/FooterSociety';
-import MainNavbar from './components/hompage/MainNavbar';
+
 import './globals.css'
 
 
@@ -13,8 +12,8 @@ export const metadata = {
   },
   
   
-  title: 'STM Marketplace',
-  description: 'STM Marketplace for Thai culture - food, games, wellness.',
+  title: 'STM Marketplace | Somtam Society: Thai Culture & Events in Europe',
+  description: 'STM Marketplace for Thai culture - food, games, wellness, and events across Europe. Join Somtam Society to connect with the Thai community!',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -26,12 +25,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-          <MainNavbar />
+    
      
        <main className="flex-grow">
 {children}
 </main>
-<FooterSociety />
+
         </body>
     </html>
   );

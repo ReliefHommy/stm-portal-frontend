@@ -30,10 +30,10 @@ export default function HeroSociety() {
     <div className="flex flex-col sm:flex-row gap-4">
 
                   <Link
-              href="/collaborator"
+              href="/somtam_2026"
               className="px-8 py-4 bg-indigo-900 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 hover:scale-105 transition-all duration-300"
             >
-              Get it on Google Play
+              Explore Events
             </Link>
       
      

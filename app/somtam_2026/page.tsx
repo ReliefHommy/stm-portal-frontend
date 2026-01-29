@@ -1,16 +1,11 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { CoreCategoryKey, SidebarNavKey } from "./components/society/types";
-import { SAMPLE_EVENTS, EU_COUNTRIES, CORE_CATEGORIES } from "./components/society/data";
-import EventSidebar from "./components/society/EventSidebar";
-import MainContentFeed from "./components/society/MainContentFeed";
-import Hero from "./components/hompage/Hero";
-import FooterSociety from "./components/hompage/FooterSociety";
-import MainNavbar from "./components/hompage/MainNavbar";
-
-
-
+import EventSidebar from "../components/society/EventSidebar";
+import { CORE_CATEGORIES, EU_COUNTRIES, SAMPLE_EVENTS } from "../components/society/data";
+import MainContentFeed from "../components/society/MainContentFeed";
+import { CoreCategoryKey, SidebarNavKey } from "../components/society/types";
+import Hero from "../components/reuse/HeroSlide";
 
 export default function HomePage() {
   // Sidebar (mobile drawer)
@@ -56,7 +51,7 @@ export default function HomePage() {
   return (
         <div className="min-h-screen bg-white text-slate-900">
       {/* Top gradient header (Spotify-like) */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-fuchsia-200 via-white to-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-fuchsia-200/60 via-white to-white" />
 
       {/* Mobile Top Bar */}
       <header className="relative z-10 flex items-center gap-3 px-4 pt-4 lg:hidden">
@@ -95,13 +90,10 @@ export default function HomePage() {
               isMobile={false}
             />
           </aside>
-
+  
           {/* Main Content */}
-     
           <main>
-             <MainNavbar/>
-          
-            
+             <Hero/>
             <div className="mb-6 hidden lg:block">
               <h1 className="text-3xl font-extrabold tracking-tight">{pageTitle}</h1>
               <p className="mt-2 text-white/70">
@@ -154,9 +146,7 @@ export default function HomePage() {
                 events={newlyAddedEvents}
               />
             </div>
-             <FooterSociety/>
           </main>
-          
         </div>
       </div>
 
