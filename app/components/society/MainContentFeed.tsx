@@ -14,12 +14,12 @@ export default function MainContentFeed({
   return (
     <section>
       <div className="mb-4">
-        <h2 className="text-xl font-extrabold tracking-tight">{title}</h2>
+        <h2 className="text-xl font-extrabold tracking-tight text-purple-700">{title}</h2>
         {subtitle ? <p className="mt-1 text-sm text-white/60">{subtitle}</p> : null}
       </div>
 
       {/* Grid: mobile 2 cols, md 3 cols, xl 4 cols (Spotify-like tiles) */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:grid-cols-4">
         {events.slice(0, 8).map((event) => (
           <EventCard key={event.id} event={event} />
         ))}

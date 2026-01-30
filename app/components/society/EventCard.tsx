@@ -5,11 +5,10 @@ export default function EventCard({ event }: { event: EventItem }) {
   const dateLabel = formatEventDate(event.startDateISO);
 
   return (
-   <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 transition hover:bg-fuchsia-500/10 hover:shadow-lg">
-      <div className="flex gap-3">
-        {/* Image */}
-        <div className="h-14 w-14 flex-none overflow-hidden rounded bg-white/10">
-          {/* Using <img> for simplicity; you can swap to next/image later */}
+    <article className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div className="flex items-start gap-3">
+        {/* Thumb */}
+        <div className="h-12 w-12 overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-200">
           {event.imageUrl ? (
             <img
               src={event.imageUrl}
@@ -20,36 +19,61 @@ export default function EventCard({ event }: { event: EventItem }) {
           ) : null}
         </div>
 
-        {/* Text */}
-        <div className="min-w-0">
-          <div className="truncate text-sm font-extrabold">{event.title}</div>
-          <div className="mt-1 truncate text-xs text-white/60">
+        {/* Title + location */}
+        <div className="min-w-0 flex-1">
+          <h3 className="truncate text-sm font-extrabold text-slate-900">
+            {event.title}
+          </h3>
+
+          <p className="mt-1 truncate text-xs text-slate-600">
             {event.locationName} • {event.city}, {event.country}
-          </div>
-          <div className="mt-2 inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-2 py-1 text-[11px] font-semibold text-white">
-            {event.coreCategory.replaceAll("_", " ")}
-          </div>
+          </p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between text-xs text-white/60">
-        <span>{dateLabel}</span>
-        <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">
-          {event.eventType}
-        </span>
+      {/* Tags row */}
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <Pill kind="category">{prettyCore(event.coreCategory)}</Pill>
+        <Pill kind="type">{event.eventType}</Pill>
       </div>
 
-      {/* Hover glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-50 transition group-hover:opacity-100">
-        <div className="absolute -inset-24 bg-gradient-to-r from-fuchsia-500/10 via-white/0 to-emerald-400/10 blur-2xl" />
+      {/* Meta */}
+      <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+        <span>{dateLabel}</span>
+        <span className="rounded-full bg-slate-100 px-2 py-1 font-semibold text-slate-700">
+          View
+        </span>
       </div>
-    </div>
+    </article>
   );
+}
+
+function Pill({
+  kind,
+  children,
+}: {
+  kind: "category" | "type";
+  children: React.ReactNode;
+}) {
+  const base =
+    "inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold";
+  const styles =
+    kind === "category"
+      ? "bg-indigo-600 text-white"
+      : "bg-slate-100 text-slate-700 ring-1 ring-slate-200";
+
+  return <span className={`${base} ${styles}`}>{children}</span>;
+}
+
+function prettyCore(key: string) {
+  return key
+    .replaceAll("_", " ")
+    .toLowerCase()
+    .replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
 function formatEventDate(iso: string) {
   const d = new Date(iso);
-  // Localized short format
   return d.toLocaleString(undefined, {
     weekday: "short",
     month: "short",

@@ -43,7 +43,7 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-02-10T17:00:00Z",
     createdAt: "2026-01-18T08:00:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaitemple_6.jpg",
   },
   {
     id: "evt_002",
@@ -56,7 +56,7 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-02-14T10:00:00Z",
     createdAt: "2026-01-25T12:00:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaifesti002.jpeg",
   },
   {
     id: "evt_003",
@@ -69,7 +69,7 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-02-20T19:30:00Z",
     createdAt: "2026-01-27T18:10:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaifesti001.jpg",
   },
   {
     id: "evt_004",
@@ -82,7 +82,7 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-02-05T17:30:00Z",
     createdAt: "2026-01-29T09:00:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaifair.jpg",
   },
   {
     id: "evt_005",
@@ -95,7 +95,7 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-03-01T16:00:00Z",
     createdAt: "2026-01-26T10:30:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1520975958225-566b2d991b63?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaifesti003.jpg",
   },
   {
     id: "evt_006",
@@ -108,6 +108,6 @@ export const SAMPLE_EVENTS: EventItem[] = [
     startDateISO: "2026-02-22T11:00:00Z",
     createdAt: "2026-01-20T07:15:00Z",
     imageUrl:
-      "https://images.unsplash.com/photo-1604908554109-2c3f1d9f0b8b?auto=format&fit=crop&w=900&q=80",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thaifair_12.jpg",
   },
 ];

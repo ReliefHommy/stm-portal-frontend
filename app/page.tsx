@@ -5,9 +5,9 @@ import { CoreCategoryKey, SidebarNavKey } from "./components/society/types";
 import { SAMPLE_EVENTS, EU_COUNTRIES, CORE_CATEGORIES } from "./components/society/data";
 import EventSidebar from "./components/society/EventSidebar";
 import MainContentFeed from "./components/society/MainContentFeed";
-import Hero from "./components/hompage/Hero";
 import FooterSociety from "./components/hompage/FooterSociety";
-import MainNavbar from "./components/hompage/MainNavbar";
+import TopNav from "./components/society/TopNav";
+
 
 
 
@@ -98,8 +98,8 @@ export default function HomePage() {
 
           {/* Main Content */}
      
-          <main>
-             <MainNavbar/>
+           <div className="min-h-screen bg-white text-slate-900">
+             <TopNav/>
           
             
             <div className="mb-6 hidden lg:block">
@@ -155,7 +155,8 @@ export default function HomePage() {
               />
             </div>
              <FooterSociety/>
-          </main>
+          </div>
+
           
         </div>
       </div>

@@ -26,7 +26,8 @@ export default function EventSidebar({
   onCloseMobile,
 }: Props) {
   return (
-    <div className="h-full rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4 backdrop-blur-xl">
+    <div className="h-full rounded-2xl p-4 text-white shadow-sm
+  bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500">
       {/* Mobile header */}
       {isMobile ? (
         <div className="mb-4 flex items-center justify-between">
@@ -36,7 +37,7 @@ export default function EventSidebar({
           </div>
           <button
             onClick={onCloseMobile}
-            className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+            className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white"
           >
             ✕
           </button>
