@@ -30,7 +30,7 @@ export default function HeroSociety() {
     <div className="flex flex-col sm:flex-row gap-4">
 
                   <Link
-              href="/somtam_2026"
+              href="/"
               className="px-8 py-4 bg-indigo-900 text-white font-bold rounded-full shadow-lg hover:bg-indigo-600 hover:scale-105 transition-all duration-300"
             >
               Explore Events
@@ -38,9 +38,13 @@ export default function HeroSociety() {
       
      
       
-      <button className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-indigo-900 text-blue-900 font-bold rounded-full hover:bg-white transition-all duration-300">
-        Explore the Map
-      </button>
+   
+                       <Link
+              href="/"
+              className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-indigo-900 text-blue-900 font-bold rounded-full hover:bg-white transition-all duration-300"
+            >
+             Explore the Map
+            </Link>
     </div>
       
   </div>
