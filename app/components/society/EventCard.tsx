@@ -14,6 +14,8 @@ export default function EventCard({ event }: { event: EventItem }) {
             <Image
               src={event.imageUrl}
               alt={event.title}
+              width={48}
+              height={48}
               className="h-full w-full object-cover"
               loading="lazy"
             />

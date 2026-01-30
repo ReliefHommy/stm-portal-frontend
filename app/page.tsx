@@ -7,6 +7,7 @@ import EventSidebar from "./components/society/EventSidebar";
 import MainContentFeed from "./components/society/MainContentFeed";
 import FooterSociety from "./components/hompage/FooterSociety";
 import TopNav from "./components/society/TopNav";
+import ThaiTempleCountryCard from "./components/society/ThaiTempleCountryCard";
 
 
 
@@ -100,7 +101,17 @@ export default function HomePage() {
      
            <div className="min-h-screen bg-white text-slate-900">
              <TopNav/>
-          
+               <>
+      {/* Topbar here */}
+      <div className="mt-6">
+        <ThaiTempleCountryCard
+          onSelect={(item) => {
+            // optional: route/filter
+            console.log("Selected:", item.country);
+          }}
+        />
+      </div>
+    </>
             
             <div className="mb-6 hidden lg:block">
               <h1 className="text-3xl font-extrabold tracking-tight">{pageTitle}</h1>
