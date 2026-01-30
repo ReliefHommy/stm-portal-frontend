@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import type { EventItem } from "./types";
 
 export default function EventCard({ event }: { event: EventItem }) {
@@ -10,7 +11,7 @@ export default function EventCard({ event }: { event: EventItem }) {
         {/* Thumb */}
         <div className="h-12 w-12 overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-200">
           {event.imageUrl ? (
-            <img
+            <Image
               src={event.imageUrl}
               alt={event.title}
               className="h-full w-full object-cover"
