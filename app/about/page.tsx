@@ -1,14 +1,24 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
 
 import type { Metadata } from "next";
-import Footer from "../components/hompage/Footer";
+import FooterSociety from "../components/hompage/FooterSociety";
 
 
 export const metadata: Metadata = {
-  title: "About Us | STM Marketplace",
+  title: "About Somtam Society | Thai Events & Marketplace in Europe",
   description:
-    "STM Marketplace is a Sweden-rooted, EU-focused platform connecting Thai food, wellness, and game experiences with modern digital tools.",
-};
+    "-Discover the heart of Thai culture in the EU. We map Thai events, festivals, and authentic marketplaces across Europe, starting from our home in Sweden.-STM Marketplace is a Sweden-rooted, EU-focused platform connecting Thai food, wellness, and game experiences with modern digital tools.",
+alternates: {
+    canonical: 'https://somtammarket.com/about',
+  },
+  openGraph: {
+    title: 'About Somtam Society',
+    description: 'Bridging Bangkok and Europe through events, food, and wellness.',
+    images: [{ url: '/logo_red.png' }], // Use a high-quality "Community" photo
+  }
+
+
+  };
 
 const AboutPage = () => {
   return (
@@ -19,28 +29,49 @@ const AboutPage = () => {
         {/* Page Header */}
         <header className="space-y-3">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
-            About STM Marketplace
+           About STM Marketplace
           </p>
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-            A Creator-Led Thai Platform for Food, Wellness & Games in Europe
+            Connecting Thai Culture Across Europe
           </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-slate-600">
-            STM Marketplace is a digital ecosystem built in Sweden and serving
-            the EU. We bring together three verticals—Thai Food, Wellness, and
-            Games—under one portal so people across Europe can explore Thai
-            culture in their kitchens, daily routines, and play.
+          <p className="max-w-2xl text-base font-semibold uppercase leading-relaxed text-slate-600">
+            Your digital home for Thai events, authentic flavors, and community wellness.
           </p>
         </header>
+                {/* Our story */}
+        <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
+          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+            Our Story: From Sweden with a Global Heart.
+          </h2>
+          <p className="text-slate-700">
+           STM (Somtam Society) began with a simple observation in Sweden: the Thai community in Europe is vibrant and growing, but its information was scattered. We started as a creator-led platform to share the "Secret Spices" of our culture—from traditional food and wellness practices to indie games inspired by Thai roots.
+          </p>
+          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+            The Evolution: Events, Stories, and Solutions.
+          </h2>
+          <p className="text-slate-700">
+         Today, we have grown into a multi-layered ecosystem designed to serve the Thai Diaspora and EU culture-seekers in three clear steps:</p>
+          <ul className="mt-3 space-y-2 text-slate-700">
+            <li>
+              • <span className="font-medium">Thai-EU Events (The Pulse):</span>  We are the first place to look for Thai festivals, temple fairs, and community meetups across all EU countries. We believe that physical connection is the heart of our society.
+            </li>
+            <li>
+              • <span className="font-medium">Content-First Exploration (The Soul):</span>  We dive deep into Thai food, holistic wellness, and creative play (Games), providing the context and stories that make our traditions meaningful.
+            </li>
+            <li>
+              • <span className="font-medium">The STM Marketplace (The Engine):</span>  We provide the infrastructure for Thai vendors in Europe. Our marketplace connects you directly with trusted Thai groceries, wellness practitioners, and authentic restaurant partners.
+            </li>
+          </ul>
+
+        </section>
 
         {/* Mission Section */}
         <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
           <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            Our Mission: Bridging Bangkok and Europe
+          Our Mission: Bridging Thai Culture and Europe
           </h2>
           <p className="text-slate-700">
-            Our mission is to give Thai culture a modern, EU-ready digital home.
-            STM Marketplace connects Thai roots with European lifestyles through
-            three focused pillars:
+            Bridging Bangkok and Europe Our mission is to give Thai culture a modern, EU-ready digital home. From our base in Sweden, we build tools and experiences that scale across the EU—so Thai culture becomes easier to access, share, and enjoy, no matter which city you call home.
           </p>
           <ul className="mt-3 space-y-2 text-slate-700">
             <li>
@@ -66,138 +97,15 @@ const AboutPage = () => {
           </p>
         </section>
 
-        {/* What We Stand For */}
-        <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
-          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            What We Stand For: Quality, Partnership & Creative Play
-          </h2>
-          <p className="text-slate-700">
-            STM Marketplace is not just another online shop. It&apos;s a
-            platform built slowly and intentionally, with a long-term vision for
-            Thai creators, businesses, and communities in Europe.
-          </p>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
-              <h3 className="text-sm font-semibold text-emerald-700">
-                Authentic Roots, EU-Ready
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                We keep Thai culture at the center—flavours, stories, and
-                traditions—while designing everything to work for EU customers,
-                regulations, and logistics.
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
-              <h3 className="text-sm font-semibold text-emerald-700">
-                Partnership Over Platforms
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                STM is built to support Thai-owned businesses, wellness
-                practitioners, and indie game creators—not to replace them. We
-                grow by helping partners grow.
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
-              <h3 className="text-sm font-semibold text-emerald-700">
-                Human + AI Creation
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                We combine human creativity with AI-enhanced tools to create
-                better content, smarter logistics, and more playful digital
-                experiences for our community.
-              </p>
-            </div>
-          </div>
-        </section>
-                {/* Content Philosophy / AI Declaration */}
-        <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
-          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            Our Content Philosophy: Human-Led, AI-Assisted
-          </h2>
-          <p className="text-sm leading-relaxed text-slate-700">
-            STM Marketplace (Somtam Market) is a platform built and curated by a
-            solo founder, [Nok R Tophitak]. All core ideas, concepts, and creative
-            direction come from lived experience, research, and original
-            inspiration around Thai food, wellness, and games.
-          </p>
-          <p className="text-sm leading-relaxed text-slate-700">
-            To ensure professional quality and publishing efficiency, we
-            leverage advanced AI tools (such as OpenAI-powered assistants and
-            design helpers) to assist with copy editing, SEO optimization, and
-            large-scale content production. Every article, recipe, product
-            description, and game concept is reviewed and approved by a human
-            before it goes live.
-          </p>
-          <p className="text-sm leading-relaxed text-slate-700">
-            In simple terms:{" "}
-            <span className="font-medium">
-              human creativity sets the direction, and AI helps execute the
-              work.
-            </span>{" "}
-            This balance allows us to stay authentic, efficient, and aligned
-            with future content and AI regulations in the EU.
-          </p>
-        </section>
 
 
-        {/* Team Section */}
-        <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
-          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            Meet the Team — Nok, Solara &amp; Nova
-          </h2>
-          <p className="text-slate-700">
-            STM Marketplace is built by a small, focused team based in Sweden
-            and powered by AI. Together, we design, code, and curate STM as a
-            long-term, creator-led platform for Thai culture in Europe.
-          </p>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="space-y-2">
-              <h3 className="text-base font-semibold">Nok — Founder</h3>
-              <p className="text-sm text-slate-700">
-                Nok is a solo founder, full-stack creator, and artist with deep
-                ties to the Thai community in Europe. She leads STM&apos;s
-                vision across Food, Wellness, and Games—from product design to
-                storytelling and development.
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-base font-semibold">
-                Solara — AI Founder Assistant
-              </h3>
-              <p className="text-sm text-slate-700">
-                Solara supports strategy, technical architecture, and content
-                structure. She helps keep STM Marketplace clear, scalable, and
-                aligned with the needs of both partners and users.
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-base font-semibold">
-                Nova — AI Content &amp; Design
-              </h3>
-              <p className="text-sm text-slate-700">
-                Nova helps craft visuals, product descriptions, wellness
-                articles, and game narratives—turning ideas into cohesive,
-                on-brand experiences across all three pillars.
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-4 text-sm text-slate-600">
-            STM Marketplace is still in its early chapters—but the direction is
-            clear: a single, calm place online where Thai food, wellness, and
-            games can grow together in the EU.
-          </p>
-        </section>
         
 
 
       </div>
       
-      <Footer />
+      <FooterSociety/>
     </main>
   );
 };

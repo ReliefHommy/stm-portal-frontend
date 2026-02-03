@@ -13,7 +13,7 @@ export const metadata = {
   
   
   title: 'STM Marketplace | Somtam Society: Thai Culture & Events in Europe',
-  description: 'STM Marketplace for Thai culture - food, games, wellness, and events across Europe. Join Somtam Society to connect with the Thai community!',
+  description: 'STM Marketplace for Thai culture - A Marketplacplace for food, games, wellness, and events across Europe. Join Somtam Society to connect with the Thai community!',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
