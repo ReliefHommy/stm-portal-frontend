@@ -44,7 +44,7 @@ const AboutPage = () => {
             Our Story: From Sweden with a Global Heart.
           </h2>
           <p className="text-slate-700">
-           STM (Somtam Society) began with a simple observation in Sweden: the Thai community in Europe is vibrant and growing, but its information was scattered. We started as a creator-led platform to share the "Secret Spices" of our culture—from traditional food and wellness practices to indie games inspired by Thai roots.
+           STM (Somtam Society) began with a simple observation in Sweden: the Thai community in Europe is vibrant and growing, but its information was scattered. We started as a creator-led platform to share the Secret of our culture—from traditional food and wellness practices to indie games inspired by Thai roots.
           </p>
           <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
             The Evolution: Events, Stories, and Solutions.
