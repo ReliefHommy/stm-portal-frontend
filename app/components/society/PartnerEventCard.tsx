@@ -4,53 +4,41 @@ import React, { useMemo, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type CountryItem = {
-  country: string;
+type PartnerEventItem = {
+  event: string;
   imageUrl: string;
   href?: string; // optional: link to a country page/filter
 };
 
-const DEFAULT_COUNTRIES: CountryItem[] = [
+const DEFAULT_COUNTRIES: PartnerEventItem[] = [
   {
-    country: "Denmark",
+    event: "Thailand Showcase 2025",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Denmark.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/UK04-4.png",
   },
   {
-    country: "Finland",
+    event: "Magic of Thailand Festival 2025",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Finland.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/UK03-3.png",
   },
   {
-    country: "France",
+    event: "Thai Garden Festival 2025",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/France.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/DE06-6.png",
   },
-  {
-    country: "Germany",
-    imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Germany.png",
-  },
-  {
-    country: "Norway",
-    imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Norway.png",
-  },
-  {
-    country: "Sweden",
-    imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Sweden.png",
-  },
+
+
+ 
 ];
 
 type Props = {
   title?: string;
-  items?: CountryItem[];
-  onSelect?: (item: CountryItem) => void; // optional callback
+  items?: PartnerEventItem[];
+  onSelect?: (item: PartnerEventItem) => void; // optional callback
 };
 
-export default function ThaiTempleCountryCard({
-  title = "Temple Luna & Buddhist Events",
+export default function PartnerEventCard({
+  title = "Throwback to the Thai Markets & Festivals in Europe 2025",
   items = DEFAULT_COUNTRIES,
   onSelect,
 }: Props) {
@@ -76,7 +64,7 @@ export default function ThaiTempleCountryCard({
         <div>
           <h2 className="text-xl font-bold text-slate-900">{title}</h2>
           <p className="text-sm text-slate-600">
-            Explore Thai temples and community spots by country.
+           Scenes from recent Thai markets and festivals across Europe in 2025.
           </p>
         </div>
 
@@ -129,18 +117,18 @@ export default function ThaiTempleCountryCard({
 
             return (
               <CardWrap
-                key={item.country}
+                key={item.event}
                 {...wrapProps}
                 onClick={() => onSelect?.(item)}
                 className="snap-start shrink-0 text-left group"
-                aria-label={`Open ${item.country}`}
+                aria-label={`Open ${item.event}`}
               >
                 <div className="w-44">
                   {/* Square image, no text overlay */}
                   <div className="relative aspect-square overflow-hidden rounded-2xl bg-slate-100 border border-slate-200 shadow-sm group-hover:shadow-md transition-shadow">
                     <Image
                       src={item.imageUrl}
-                      alt={item.country}
+                      alt={item.event}
                       fill
                       sizes="176px"
                       className="object-cover"
@@ -151,10 +139,10 @@ export default function ThaiTempleCountryCard({
                   {/* Label below image (not on image) */}
                   <div className="mt-2">
                     <p className="text-base font-semibold text-slate-900">
-                      {item.country}
+                      {item.event}
                     </p>
                     <p className="text-xs text-slate-600">
-                      Thai temples & events
+                      Thai markets & Festivals
                     </p>
                   </div>
                 </div>

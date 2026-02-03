@@ -8,6 +8,7 @@ import MainContentFeed from "./components/society/MainContentFeed";
 import FooterSociety from "./components/hompage/FooterSociety";
 import TopNav from "./components/society/TopNav";
 import ThaiTempleCountryCard from "./components/society/ThaiTempleCountryCard";
+import PartnerEventCard from "./components/society/PartnerEventCard";
 
 
 
@@ -49,7 +50,7 @@ export default function HomePage() {
   // Optional: simple nav switching behavior (you can route later)
   const pageTitle =
     activeNav === "HOME"
-      ? "Good morning"
+      ? "Go Together Luna Temple Events"
       : activeNav === "SAVED"
       ? "Saved Events"
       : "Go Together Board";
@@ -100,14 +101,15 @@ export default function HomePage() {
           {/* Main Content */}
      
            <div className="min-h-screen bg-white text-slate-900">
+                 {/* TopNav */}
              <TopNav/>
                <>
-      {/* Topbar here */}
+      {/* ThaiTempleCountryCard */}
       <div className="mt-6">
-        <ThaiTempleCountryCard
+        <PartnerEventCard
           onSelect={(item) => {
             // optional: route/filter
-            console.log("Selected:", item.country);
+            console.log("Selected:", item.event);
           }}
         />
       </div>
@@ -119,6 +121,17 @@ export default function HomePage() {
                 Find temple days, markets, music, and community meetups across EU.
               </p>
             </div>
+                       <>
+      {/* ThaiTempleCountryCard */}
+      <div className="mt-6">
+        <ThaiTempleCountryCard
+          onSelect={(item) => {
+            // optional: route/filter
+            console.log("Selected:", item.country);
+          }}
+        />
+      </div>
+    </>
 
             {/* Mobile: category chips above feed (optional UX improvement) */}
             <div className="mb-4 lg:hidden">
@@ -151,6 +164,7 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
+
 
             <div className="space-y-8">
               <MainContentFeed
