@@ -1,5 +1,4 @@
-
-export type SidebarNavKey = "HOME" | "SAVED" | "TOGETHER";
+// app/components/society/types.ts
 
 export type CoreCategoryKey =
   | "TEMPLE_DAY_TRACKER"
@@ -12,24 +11,75 @@ export type CoreCategory = {
   label: string;
 };
 
-export type EventTypeFromBackend = "RELIGIOUS" | "CONCERT" | "MARKET" | "COMMUNITY";
+export type SidebarNavKey = "HOME" | "SAVED" | "BOARD";
 
 export type EventItem = {
   id: string;
   title: string;
-
-  // Mirrors your Django Event.EventType
-  eventType: EventTypeFromBackend;
-
-  // Your landing page filter layer (4 core categories)
+  eventType: string;
   coreCategory: CoreCategoryKey;
-
-  // Mirrors Event.location foreign key concept (flattened for UI)
   locationName: string;
   city: string;
   country: string;
+  startDateISO: string;
+  createdAt: string;
+  imageUrl?: string | null;
+};
 
-  startDateISO: string; // e.g. "2026-02-14T10:00:00Z"
-  createdAt: string;    // used for “Newly Added”
-  imageUrl?: string;
+export type LocationDTO = {
+  id?: number;
+  name?: string;
+  category?: string;
+  address?: string;
+  website?: string | null;
+  country?: string;
+  country_code?: string;
+  city?: string;
+  lat?: number | null;
+  lng?: number | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  cover_image?: string | null;
+  [key: string]: unknown;
+};
+
+export type EventDTO = {
+  id?: number | string;
+  title?: string;
+  name?: string;
+  description?: string | null;
+  event_type?: string;
+  type?: string;
+  category?: string;
+  start_datetime?: string;
+  start_date?: string;
+  startDate?: string;
+  end_datetime?: string | null;
+  end_date?: string | null;
+  created_at?: string;
+  createdAt?: string;
+  cover_image?: string | null;
+  banner_image?: string | null;
+  image_url?: string | null;
+  image?: string | null;
+  location_id?: number;
+  location?: number | LocationDTO | null;
+  location_name?: string | null;
+  location_category?: string | null;
+  city?: string | null;
+  country?: string | null;
+  country_code?: string | null;
+  [key: string]: unknown;
+};
+
+// UI model (what MainContentFeed uses)
+export type EventUI = {
+  id: number;
+  title: string;
+  subtitle: string;
+  categoryPill: string;
+  typePill: string;
+  dateLine: string;
+  bannerImage?: string | null;
+  href: string;
 };
