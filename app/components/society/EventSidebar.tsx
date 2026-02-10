@@ -1,43 +1,55 @@
+//app/components/society/EventSidebar.tsx
+
 "use client";
 
 import React from "react";
-import { CoreCategory, CoreCategoryKey } from "./types";
-
+import type { CoreCategory, CoreCategoryKey, SidebarNavKey } from "./types";
 
 
 
 type Props = {
-
-
+  // Categories
   activeCategory: CoreCategoryKey | "ALL";
   onCategoryChange: (key: CoreCategoryKey | "ALL") => void;
-
   categories: CoreCategory[];
+
+  // Navigation (optional, so it won’t break existing usage)
+  activeNav?: SidebarNavKey;
+  onNavChange?: (key: SidebarNavKey) => void;
+
+  // Mobile drawer
   isMobile?: boolean;
   onCloseMobile?: () => void;
 };
 
-export default function EventSidebar({
 
+export default function EventSidebar({
   activeCategory,
   onCategoryChange,
   categories,
+  activeNav = "HOME",
+  onNavChange,
   isMobile,
   onCloseMobile,
 }: Props) {
+  const handleNav = (key: SidebarNavKey) => {
+    onNavChange?.(key);
+    if (isMobile) onCloseMobile?.();
+  };
+
   return (
-    <div className="h-full rounded-2xl p-4 text-white shadow-sm
-  bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500">
+    <div className="h-full rounded-2xl bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-4 text-white shadow-sm">
       {/* Mobile header */}
       {isMobile ? (
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <div className="text-xs text-white/60">Somtam 2026</div>
-            <div className="text-lg font-bold text-white/60">Menu</div>
+            <div className="text-xs text-white/60">Somtam Society</div>
+            <div className="text-lg font-bold text-white/80">Menu</div>
           </div>
           <button
             onClick={onCloseMobile}
-            className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white"
+            className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10"
+            aria-label="Close menu"
           >
             ✕
           </button>
@@ -50,7 +62,24 @@ export default function EventSidebar({
           Page Navigation
         </div>
 
-   
+        <div className="space-y-1">
+          <SidebarLink
+            label="Home"
+            active={activeNav === "HOME"}
+            onClick={() => handleNav("HOME")}
+          />
+          <SidebarLink
+            label="Events"
+            active={activeNav === "SAVED"}
+            onClick={() => handleNav("SAVED")}
+          />
+          <SidebarLink
+            label="Map"
+            active={activeNav === "BOARD"}
+            onClick={() => handleNav("BOARD")}
+          />
+
+        </div>
       </div>
 
       {/* Section 2: Categories */}
@@ -76,13 +105,18 @@ export default function EventSidebar({
           ))}
         </div>
 
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
           <div className="font-semibold text-white">Somtam Society</div>
-          <div className="mt-1">
+          <div className="mt-1 text-white/80">
             Temple days • Markets • Music • Community
           </div>
-          <div className="mt-3 text-xs text-white/50">
-            Next step: connect to Django API: <span className="text-white/70"></span>
+
+          <div className="mt-3 text-xs text-white/60">
+            ✅ Connected to Ninja API (Render)
+          </div>
+
+          <div className="mt-2 text-xs text-white/60">
+            Next: make categories filter real events + add Country cards later
           </div>
         </div>
       </div>
@@ -104,7 +138,9 @@ function SidebarLink({
       onClick={onClick}
       className={[
         "w-full rounded-xl px-3 py-2 text-left text-sm font-semibold transition",
-        active ? "bg-white/10 text-white" : "text-white/75 hover:bg-white/5 hover:text-white",
+        active
+          ? "bg-white/15 text-white"
+          : "text-white/80 hover:bg-white/10 hover:text-white",
       ].join(" ")}
     >
       {label}

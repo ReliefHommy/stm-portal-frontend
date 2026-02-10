@@ -83,12 +83,14 @@ export function mapEventsToEventItems(
       title,
       eventType,
       coreCategory,
+      category: eventType,
       locationName,
       city,
       country: country || "Unknown",
       startDateISO: getDateString(startDateISO),
       createdAt: getDateString(createdAt),
       imageUrl: imageUrl || null,
+      locations: location ? [location] : [],
     };
   });
 }

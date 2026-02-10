@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 
 export async function GET(
-  _req: Request,
-  { params }: { params: { id: string } }
+  _request: Request,
+  context: { params: Promise<{ id: string }> }
 ) {
-  const url = `https://society-somtam-backend.onrender.com/api/society/events/${params.id}`;
+  const { id } = await context.params;
+
+  const url = `https://society-somtam-backend.onrender.com/api/society/events/${id}`;
 
   try {
     const res = await fetch(url, { cache: "no-store" });
@@ -28,3 +30,4 @@ export async function GET(
     );
   }
 }
+

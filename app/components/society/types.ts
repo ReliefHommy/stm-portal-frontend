@@ -16,17 +16,18 @@ export type CoreCategory = {
 export type SidebarNavKey = "HOME" | "SAVED" | "BOARD";
 
 export type EventItem = {
-  city: ReactNode;
-  
   id: string;
   title: string;
   eventType: string;
   coreCategory: CoreCategoryKey;
+
   locationName: string;
-  locations: string;
   country: string;
+  city?: string;
+
   startDateISO: string;
   createdAt: string;
+
   imageUrl?: string | null;
 };
 
