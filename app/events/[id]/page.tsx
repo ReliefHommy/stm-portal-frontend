@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FooterSociety from "@/app/components/hompage/FooterSociety";
 import TopNav from "@/app/components/society/TopNav";
 
@@ -42,11 +43,12 @@ export default async function EventDetailPage({ params }: { params: { id: string
 
         {event.banner_image ? (
           <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200">
-             <div className="aspect-square w-full">
-   <img
+             <div className="aspect-square w-full relative">
+   <Image
               src={event.banner_image}
               alt={event.title}
-              className="h-full w-full object-cover object-center"
+              fill
+              className="object-cover object-center"
             />
              </div>
          
