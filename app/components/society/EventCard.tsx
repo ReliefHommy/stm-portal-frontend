@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { EventItem } from "./types";
+import Link from "next/link";
 
 export default function EventCard({ event }: { event: EventItem }) {
   const dateLabel = formatEventDate(event.startDateISO);
@@ -41,12 +42,16 @@ export default function EventCard({ event }: { event: EventItem }) {
       </div>
 
       {/* Meta */}
-      <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+      <Link href={`/events/${event.id}`}>
+            <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
         <span>{dateLabel}</span>
         <span className="rounded-full bg-slate-100 px-2 py-1 font-semibold text-slate-700">
           View
         </span>
-      </div>
+      </div></Link>
+
+      
+
     </article>
   );
 }
