@@ -1,5 +1,7 @@
 // app/components/society/types.ts
 
+import { ReactNode } from "react";
+
 export type CoreCategoryKey =
   | "TEMPLE_DAY_TRACKER"
   | "MARKET_FOOD_FESTIVALS"
@@ -14,12 +16,14 @@ export type CoreCategory = {
 export type SidebarNavKey = "HOME" | "SAVED" | "BOARD";
 
 export type EventItem = {
+  city: ReactNode;
+  
   id: string;
   title: string;
   eventType: string;
   coreCategory: CoreCategoryKey;
   locationName: string;
-  city: string;
+  locations: string;
   country: string;
   startDateISO: string;
   createdAt: string;

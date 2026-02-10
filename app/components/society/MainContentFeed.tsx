@@ -1,5 +1,6 @@
-//app/components/society/MainContentFeed.tsx
+// app/components/society/MainContentFeed.tsx
 "use client";
+
 import React, { useEffect, useMemo, useState } from "react";
 import type { EventItem } from "./types";
 import EventCard from "./EventCard";
@@ -9,15 +10,16 @@ import { mapEventsToEventItems } from "./mappers";
 export default function MainContentFeed({
   title,
   subtitle,
-  events,
 }: {
   title: string;
   subtitle?: string;
-  events?: EventItem[];
 }) {
-  void events;
   const [items, setItems] = useState<EventItem[]>([]);
   const [loaded, setLoaded] = useState(false);
+
+  // ✅ debug counts from REAL fetch
+  const [eventsCount, setEventsCount] = useState(0);
+  const [locationsCount, setLocationsCount] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -29,6 +31,9 @@ export default function MainContentFeed({
       ]);
 
       if (cancelled) return;
+
+      setEventsCount(Array.isArray(eventsData) ? eventsData.length : 0);
+      setLocationsCount(Array.isArray(locationsData) ? locationsData.length : 0);
 
       const mapped = mapEventsToEventItems(eventsData, locationsData);
       setItems(mapped);
@@ -52,8 +57,9 @@ export default function MainContentFeed({
 
     if (lowerTitle.includes("newly")) {
       const sorted = [...source].sort((a, b) => {
-        const aTime = Date.parse(a.createdAt);
-        const bTime = Date.parse(b.createdAt);
+        // createdAt may not exist; fall back to id sorting
+        const aTime = a.createdAt ? Date.parse(a.createdAt) : NaN;
+        const bTime = b.createdAt ? Date.parse(b.createdAt) : NaN;
 
         if (!Number.isNaN(aTime) && !Number.isNaN(bTime)) return bTime - aTime;
         if (!Number.isNaN(aTime)) return -1;
@@ -76,12 +82,17 @@ export default function MainContentFeed({
   return (
     <section>
       <div className="mb-4">
-        <h2 className="text-xl font-extrabold tracking-tight text-purple-700">{title}</h2>
-        {subtitle ? <p className="mt-1 text-sm text-white/60">{subtitle}</p> : null}
+        <h2 className="text-xl font-extrabold tracking-tight text-purple-700">
+          {title}
+        </h2>
+        {subtitle ? (
+          <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
+        ) : null}
       </div>
 
-      {/* Grid: mobile 2 cols, md 3 cols, xl 4 cols (Spotify-like tiles) */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 md:grid-cols-3 xl:grid-cols-4">
+  
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
         {displayEvents.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
@@ -95,3 +106,4 @@ export default function MainContentFeed({
     </section>
   );
 }
+

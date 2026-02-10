@@ -29,7 +29,7 @@ export default function EventCard({ event }: { event: EventItem }) {
           </h3>
 
           <p className="mt-1 truncate text-xs text-slate-600">
-            {event.locationName} • {event.city}, {event.country}
+            {event.locationName} •{event.country}
           </p>
         </div>
       </div>
