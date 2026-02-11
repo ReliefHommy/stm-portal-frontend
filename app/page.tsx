@@ -110,14 +110,16 @@ export default function HomePage() {
 
             <div className="space-y-8">
               <MainContentFeed
-                title="Events Near Your EU Location"
-                subtitle={`Showing EU events (priority: ${userCountry})`}
-              />
+  title="Events Near Your EU Location"
+  subtitle={`Showing EU events (priority: ${userCountry})`}
+  activeCategory={activeCategory}
+/>
 
-              <MainContentFeed
-                title="Newly Added Events"
-                subtitle="Fresh updates from partners & community"
-              />
+<MainContentFeed
+  title="Newly Added Events"
+  subtitle="Fresh updates from partners & community"
+  activeCategory={activeCategory}
+/>
             </div>
 
             <FooterSociety />

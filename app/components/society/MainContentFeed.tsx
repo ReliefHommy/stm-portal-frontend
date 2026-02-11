@@ -3,7 +3,6 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import type { CoreCategoryKey, EventItem } from "./types";
-
 import EventCard from "./EventCard";
 import { fetchEvents, fetchLocations } from "./api";
 import { mapEventsToEventItems } from "./mappers";
@@ -12,10 +11,12 @@ export default function MainContentFeed({
   title,
   subtitle,
   activeCategory = "ALL",
+
 }: {
   title: string;
   subtitle?: string;
   activeCategory?: CoreCategoryKey | "ALL";
+
 }) {
   const [allItems, setAllItems] = useState<EventItem[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -52,14 +53,13 @@ export default function MainContentFeed({
     };
   }, []);
 
- const filteredItems = useMemo(() => {
+    const filteredItems = useMemo(() => {
   if (activeCategory === "ALL") return allItems;
-  return allItems.filter((e) => e.coreCategory === activeCategory);
+  return allItems.filter((item) => item.coreCategory === activeCategory);
 }, [allItems, activeCategory]);
 
-
-  const showEmptyState = loaded && filteredItems.length === 0;
-
+  const showEmptyState = filteredItems.length === 0;
+console.log("activeCategory:", activeCategory);
   return (
     <section>
       <div className="mb-4">

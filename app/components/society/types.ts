@@ -1,6 +1,5 @@
 // app/components/society/types.ts
 
-import { ReactNode } from "react";
 
 export type CoreCategoryKey =
   | "TEMPLE_DAY_TRACKER"

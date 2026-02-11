@@ -37,8 +37,8 @@ export default function EventCard({ event }: { event: EventItem }) {
 
       {/* Tags row */}
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <Pill kind="category">{prettyCore(event.coreCategory)}</Pill>
-        <Pill kind="type">{event.eventType}</Pill>
+        <Pill kind="category">{prettyCore(event.eventType)}</Pill>
+        <Pill kind="type">{event.country}</Pill>
       </div>
 
       {/* Meta */}

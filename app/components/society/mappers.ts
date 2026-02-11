@@ -1,50 +1,41 @@
 // app/components/society/mappers.ts
-
 import type { CoreCategoryKey, EventDTO, EventItem, LocationDTO } from "./types";
-
-const EVENT_TYPE_TO_CORE: Record<string, CoreCategoryKey> = {
-  RELIGIOUS: "TEMPLE_DAY_TRACKER",
-  TEMPLE: "TEMPLE_DAY_TRACKER",
-  MARKET: "MARKET_FOOD_FESTIVALS",
-  FOOD: "MARKET_FOOD_FESTIVALS",
-  FESTIVAL: "MARKET_FOOD_FESTIVALS",
-  MUSIC: "MUSIC_ENTERTAINMENT",
-  CONCERT: "MUSIC_ENTERTAINMENT",
-  ENTERTAINMENT: "MUSIC_ENTERTAINMENT",
-  COMMUNITY: "COMMUNITY_EVENTS",
-};
 
 function pickString(...values: Array<unknown>): string {
   for (const value of values) {
-    if (typeof value === "string" && value.trim()) return value;
+    if (typeof value === "string" && value.trim()) return value.trim();
   }
   return "";
 }
 
-function normalizeType(value: string) {
+function normalize(value: string): string {
   return value.trim().toUpperCase();
 }
 
-function toCoreCategory(value: string): CoreCategoryKey {
-  const key = normalizeType(value).replace(/\s+/g, "_");
-  return EVENT_TYPE_TO_CORE[key] ?? "COMMUNITY_EVENTS";
-}
-
 function getLocationFromEvent(event: EventDTO, locationsById: Map<number, LocationDTO>) {
-  if (typeof event.location === "object" && event.location !== null) return event.location;
+  if (typeof event.location === "object" && event.location !== null) return event.location as LocationDTO;
   if (typeof event.location_id === "number") return locationsById.get(event.location_id);
   if (typeof event.location === "number") return locationsById.get(event.location);
   return undefined;
+}
+
+function toCoreCategory(eventTypeRaw: string, locationCategoryRaw: string): CoreCategoryKey {
+  const eventType = normalize(eventTypeRaw);
+  const locCat = normalize(locationCategoryRaw);
+
+  // Based on your Django models
+  if (locCat === "TEMPLE" || eventType === "RELIGIOUS") return "TEMPLE_DAY_TRACKER";
+  if (locCat === "MARKET" || locCat === "RESTAURANT" || eventType === "MARKET")
+    return "MARKET_FOOD_FESTIVALS";
+  if (eventType === "CONCERT") return "MUSIC_ENTERTAINMENT";
+  return "COMMUNITY_EVENTS";
 }
 
 function getDateString(value: string) {
   return value || new Date().toISOString();
 }
 
-export function mapEventsToEventItems(
-  events: EventDTO[],
-  locations: LocationDTO[],
-): EventItem[] {
+export function mapEventsToEventItems(events: EventDTO[], locations: LocationDTO[]): EventItem[] {
   const locationsById = new Map<number, LocationDTO>();
   for (const loc of locations) {
     if (typeof loc.id === "number") locationsById.set(loc.id, loc);
@@ -54,43 +45,49 @@ export function mapEventsToEventItems(
     const location = getLocationFromEvent(event, locationsById);
 
     const title = pickString(event.title, event.name, "Untitled event");
-    const eventType = normalizeType(pickString(event.event_type, event.type, event.category, "COMMUNITY"));
-    const coreCategory = toCoreCategory(eventType);
 
-    const locationName = pickString(
-      event.location_name,
-      location?.name,
-      "Unknown location",
+    const eventType = normalize(pickString(event.event_type, event.type, "COMMUNITY"));
+    const locationCategory = normalize(
+      pickString(event.location_category, (location as any)?.category, "")
     );
-    const city = pickString(event.city, location?.city, "Unknown city");
-    const country = pickString(event.country, location?.country, event.country_code, location?.country_code, "");
 
-    const startDateISO = pickString(event.start_datetime, event.start_date, event.startDate);
+    const coreCategory = toCoreCategory(eventType, locationCategory);
+
+    const locationName = pickString(event.location_name, location?.name, "Unknown location");
+
+    const city = pickString(event.city, (location as any)?.city, "");
+    const country = pickString(
+      event.country_code,
+      (location as any)?.country_code,
+      event.country,
+      (location as any)?.country,
+      "Unknown"
+    );
+
+    const startDateISO = pickString(event.start_date, event.start_datetime, event.startDate);
     const createdAt = pickString(event.created_at, event.createdAt, startDateISO);
 
     const imageUrl = pickString(
-      event.cover_image,
       event.banner_image,
+      event.cover_image,
       event.image_url,
-      event.image,
-      location?.cover_image,
+      event.image
     );
 
-    const id = String(event.id ?? (event as { uuid?: string }).uuid ?? index);
+    const id = String(event.id ?? index);
 
     return {
       id,
       title,
       eventType,
       coreCategory,
-      category: eventType,
       locationName,
-      city,
-      country: country || "Unknown",
+      country,
+      city: city || undefined,
       startDateISO: getDateString(startDateISO),
       createdAt: getDateString(createdAt),
       imageUrl: imageUrl || null,
-      locations: location ? [location] : [],
     };
   });
 }
+
