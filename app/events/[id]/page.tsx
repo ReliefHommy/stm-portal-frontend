@@ -64,7 +64,7 @@ export default async function EventDetailPage({ params }: { params: { id: string
           </div>
         ) : null}
       </div>
-         <FooterSociety/>
+        
     </div>
   );
 }

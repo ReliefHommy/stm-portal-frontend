@@ -7,6 +7,7 @@ export default function EventCard({ event }: { event: EventItem }) {
   const dateLabel = formatEventDate(event.startDateISO);
 
   return (
+
     <article className="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start gap-3">
         {/* Thumb */}
@@ -54,6 +55,7 @@ export default function EventCard({ event }: { event: EventItem }) {
 
     </article>
   );
+  
 }
 
 function Pill({

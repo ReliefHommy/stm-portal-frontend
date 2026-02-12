@@ -115,11 +115,7 @@ export default function HomePage() {
   activeCategory={activeCategory}
 />
 
-<MainContentFeed
-  title="Newly Added Events"
-  subtitle="Fresh updates from partners & community"
-  activeCategory={activeCategory}
-/>
+
             </div>
 
             <FooterSociety />

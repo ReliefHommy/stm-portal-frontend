@@ -59,7 +59,7 @@ export default function MainContentFeed({
 }, [allItems, activeCategory]);
 
   const showEmptyState = filteredItems.length === 0;
-console.log("activeCategory:", activeCategory);
+
   return (
     <section>
       <div className="mb-4">
