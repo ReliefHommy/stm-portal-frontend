@@ -26,20 +26,22 @@ export default function EventCard({ event }: { event: EventItem }) {
         </div>
 
         {/* Title + location */}
-        <div className="min-w-0 flex-1">
-          <h3 className="truncate text-sm font-extrabold text-slate-900">
-            {event.title}
-          </h3>
-          {event.sub_title_thai && (
-  <p className="mt-1 truncate text-sm text-slate-500">
-    {event.sub_title_thai}
-  </p>
-)}
+      <div className="min-w-0 flex-1">
+  <h3 className="truncate text-sm font-extrabold text-slate-900">
+    {event.title}
+  </h3>
 
-          <p className="mt-1 truncate text-xs text-slate-600">
-            {event.locationName} •{event.country}
-          </p>
-        </div>
+  {event.sub_title_thai ? (
+    <p className="mt-1 truncate text-sm text-slate-500">
+      {event.sub_title_thai}
+    </p>
+  ) : null}
+
+  <p className="mt-1 truncate text-xs text-slate-600">
+    {event.locationName} • {event.country}
+  </p>
+</div>
+
       </div>
 
       {/* Tags row */}

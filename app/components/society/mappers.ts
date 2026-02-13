@@ -79,6 +79,8 @@ export function mapEventsToEventItems(events: EventDTO[], locations: LocationDTO
     return {
       id,
       title,
+      sub_title_thai: (event as any).sub_title_thai ?? null,
+      description_thai: (event as any).description_thai ?? null,
       eventType,
       coreCategory,
       locationName,
