@@ -1,3 +1,4 @@
+//app/components/society/EventCard.tsx
 import React from "react";
 import Image from "next/image";
 import type { EventItem } from "./types";
