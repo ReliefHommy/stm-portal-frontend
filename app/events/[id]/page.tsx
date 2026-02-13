@@ -28,6 +28,7 @@ export default async function EventDetailPage({ params }: { params: { id: string
           This event may have been removed or the API is unavailable.
         </p>
       </div>
+      
     );
   }
 

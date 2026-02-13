@@ -17,6 +17,7 @@ export type SidebarNavKey = "HOME" | "SAVED" | "BOARD";
 export type EventItem = {
   id: string;
   title: string;
+  sub_title_thai?: string | null;
   eventType: string;
   coreCategory: CoreCategoryKey;
 
@@ -52,6 +53,7 @@ export type EventDTO = {
   title?: string;
   name?: string;
   description?: string | null;
+  description_thai?: string | null;
   event_type?: string;
   type?: string;
   category?: string;

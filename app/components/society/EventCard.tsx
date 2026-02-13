@@ -29,6 +29,11 @@ export default function EventCard({ event }: { event: EventItem }) {
           <h3 className="truncate text-sm font-extrabold text-slate-900">
             {event.title}
           </h3>
+          {event.sub_title_thai && (
+  <p className="mt-1 truncate text-sm text-slate-500">
+    {event.sub_title_thai}
+  </p>
+)}
 
           <p className="mt-1 truncate text-xs text-slate-600">
             {event.locationName} •{event.country}
