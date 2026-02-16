@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { EventItem } from "./typs";
 
 
@@ -12,7 +13,7 @@ export default function EventCard({ event }: { event: EventItem }) {
         <div className="h-14 w-14 flex-none overflow-hidden rounded-xl bg-white/10">
           {/* Using <img> for simplicity; you can swap to next/image later */}
           {event.imageUrl ? (
-            <img
+            <Image
               src={event.imageUrl}
               alt={event.title}
               className="h-full w-full object-cover"
