@@ -25,7 +25,7 @@ export default function TopNav() {
 
         <nav className="flex items-center gap-4 text-sm font-semibold text-slate-700">
           <Link className="hover:text-slate-900" href="/">Home</Link>
-          <Link className="hover:text-slate-900" href="/collaborator">Join as Collaborator</Link>
+    
         </nav>
       </div>
     </header>

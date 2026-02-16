@@ -1,6 +1,10 @@
-import Image from "next/image";
 
+import Image from "next/image";
 import TopNav from "@/app/components/society/TopNav";
+import EventContactRow from "@/app/components/society/EventContactRow";
+
+
+
 
 async function getEventFromList(id: string) {
   const res = await fetch(
@@ -17,6 +21,7 @@ async function getEventFromList(id: string) {
   return events.find((e: any) => e?.id === numericId) ?? null;
 }
 
+
 export default async function EventDetailPage({ params }: { params: { id: string } }) {
   const event = await getEventFromList(params.id);
 
@@ -31,7 +36,26 @@ export default async function EventDetailPage({ params }: { params: { id: string
       
     );
   }
-
+function DetailRow({ label, value }: { label: string; value: string }) {
+  return (
+    <>
+      <div className="text-sm font-semibold text-slate-900">{label} :</div>
+      <div className="text-sm text-slate-700">{value}</div>
+    </>
+  );
+}
+function formatDateTime(iso?: string | null) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleString(undefined, {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
   return (
     
     <div className="p-6">
@@ -80,10 +104,40 @@ export default async function EventDetailPage({ params }: { params: { id: string
      
 
       <article className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 prose prose-slate max-w-none">
-        <h3 className="text-xl font-bold">About the Event</h3>
+        <h3 className="text-xl font-bold">Overview</h3>
         <p>{event.description}</p>
       </article>
+      <br></br>
     </section>
+  
+
+<section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+  <h2 className="text-xl font-extrabold text-slate-900">Details</h2>
+
+  <div className="mt-6 grid grid-cols-1 gap-y-5 md:grid-cols-[220px_1fr] md:gap-y-4">
+    <DetailRow label="Event Organizer" value={event.location_website ?? "—"} />
+    <DetailRow
+  label="Adress"
+  value={`${event.location_name ?? "—"} • ${event.country_code ?? "—"}`}
+/>
+   
+    <DetailRow label="Date Start" value={formatDateTime(event.start_date)} />
+    <DetailRow label="Date End" value={event.end_date ? formatDateTime(event.end_date) : "—"} />
+    <DetailRow label="Website" value={event.location_website ?? "—"} />
+  
+
+  </div>
+</section>
+
+
+
+<EventContactRow
+  website={event.location_website}
+  facebook={event.facebook}
+  email={event.contact_email}
+/>
+
+    <br></br>
                  <section className="md:col-span-2 space-y-6">
       <div className="bg-indigo-50 p-6 rounded-2xl border-l-4 border-indigo-500">
         <h3 className="text-lg font-bold text-indigo-900 mb-2 flex items-center gap-2">
@@ -102,6 +156,7 @@ export default async function EventDetailPage({ params }: { params: { id: string
         <p>{event.description_thai}</p>
       </article>
     </section>
+    <br></br>
       <aside className="space-y-6">
       <div className="flex flex-col gap-3">
         <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition shadow-md">
