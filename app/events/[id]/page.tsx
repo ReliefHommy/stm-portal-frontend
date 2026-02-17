@@ -115,15 +115,18 @@ function formatDateTime(iso?: string | null) {
   <h2 className="text-xl font-extrabold text-slate-900">Details</h2>
 
   <div className="mt-6 grid grid-cols-1 gap-y-5 md:grid-cols-[220px_1fr] md:gap-y-4">
-    <DetailRow label="Event Organizer" value={event.location_website ?? "—"} />
+    <DetailRow label="📢Event Organizer" value={event.location_website ?? "—"} />
     <DetailRow
-  label="Adress"
+  label="📍Location"
   value={`${event.location_name ?? "—"} • ${event.country_code ?? "—"}`}
 />
    
-    <DetailRow label="Date Start" value={formatDateTime(event.start_date)} />
-    <DetailRow label="Date End" value={event.end_date ? formatDateTime(event.end_date) : "—"} />
-    <DetailRow label="Website" value={event.location_website ?? "—"} />
+    <DetailRow label="📅 Date Start" value={formatDateTime(event.start_date)} />
+    <DetailRow label="📆 Date End" value={event.end_date ? formatDateTime(event.end_date) : "—"} />
+    <DetailRow label="📧Contact" value={event.location_name ?? "—"} 
+    
+    
+    />
   
 
   </div>

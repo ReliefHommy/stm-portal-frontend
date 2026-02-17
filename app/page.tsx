@@ -113,7 +113,11 @@ export default function HomePage() {
   title="Events Near Your EU Location"
   subtitle={`Showing EU events (priority: ${userCountry})`}
   activeCategory={activeCategory}
+
+  
 />
+              {/* Other sections (e.g. Saved Events) could go here based on activeNav */}
+
 
 
             </div>

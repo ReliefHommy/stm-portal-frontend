@@ -38,7 +38,7 @@ export default function EventCard({ event }: { event: EventItem }) {
   ) : null}
 
   <p className="mt-1 truncate text-xs text-slate-600">
-    {event.locationName} • {event.country}
+    {event.locationName}
   </p>
 </div>
 

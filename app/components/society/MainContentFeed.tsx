@@ -3,9 +3,9 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import type { CoreCategoryKey, EventItem } from "./types";
-import EventCard from "./EventCard";
 import { fetchEvents, fetchLocations } from "./api";
 import { mapEventsToEventItems } from "./mappers";
+import NewStyleEventCard from "./NewStyleEventCard";
 
 export default function MainContentFeed({
   title,
@@ -72,12 +72,14 @@ export default function MainContentFeed({
       </div>
 
   
+<div className="max-w-[860px]">      
+  <div className="grid grid-cols-1 gap-6">
+  {filteredItems.map((event) => (
+    <NewStyleEventCard key={event.id} event={event} />
+  ))}
+</div></div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
-        {filteredItems.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
+
 
       {showEmptyState ? (
         <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
