@@ -1,9 +1,10 @@
 // app/components/society/MainContentFeed.tsx
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import type { CoreCategoryKey, EventItem } from "./types";
-import { fetchEvents, fetchLocations } from "./api";
+import { fetchEvents, fetchEventsPaged, fetchLocations } from "./api";
 import { mapEventsToEventItems } from "./mappers";
 import NewStyleEventCard from "./NewStyleEventCard";
 
@@ -19,46 +20,90 @@ export default function MainContentFeed({
 
 }) {
   const [allItems, setAllItems] = useState<EventItem[]>([]);
+  const [locationsData, setLocationsData] = useState<any[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const loadingMoreRef = useRef(false);
+
+  const [nextOffset, setNextOffset] = useState<number | null>(null);
+  const [loadingMore, setLoadingMore] = useState(false);
 
 
-  // ✅ debug counts from REAL fetch
-  const [, setEventsCount] = useState(0);
-  const [, setLocationsCount] = useState(0);
+   const LIMIT = 12;
 
   useEffect(() => {
     let cancelled = false;
 
-    async function load() {
-      const [eventsData, locationsData] = await Promise.all([
-        fetchEvents(),
-        fetchLocations(),
-      ]);
+    async function initialLoad() {
+      // 1) locations first (cache for mapping)
+      const locs = await fetchLocations();
+      if (cancelled) return;
+      setLocationsData(locs);
 
+      // 2) first page of events
+      const page = await fetchEventsPaged({ limit: LIMIT, offset: 0 });
       if (cancelled) return;
 
-      setEventsCount(Array.isArray(eventsData) ? eventsData.length : 0);
-      setLocationsCount(Array.isArray(locationsData) ? locationsData.length : 0);
-
-      const mapped = mapEventsToEventItems(eventsData, locationsData);
+      const mapped = mapEventsToEventItems(page.items, locs);
       setAllItems(mapped);
+      setNextOffset(page.next_offset ?? null);
       setLoaded(true);
 
     }
 
-    load();
+    initialLoad();
 
     return () => {
       cancelled = true;
     };
   }, []);
 
-    const filteredItems = useMemo(() => {
-  if (activeCategory === "ALL") return allItems;
-  return allItems.filter((item) => item.coreCategory === activeCategory);
-}, [allItems, activeCategory]);
+  async function onLoadMore() {
+    if (loadingMoreRef.current) return;      // ✅ hard lock
+    if (nextOffset === null) return;
 
-  const showEmptyState = filteredItems.length === 0;
+    loadingMoreRef.current = true;
+    setLoadingMore(true);
+
+    try {
+      const page = await fetchEventsPaged({ limit: LIMIT, offset: nextOffset });
+
+      if (!page.items || page.items.length === 0) {
+        console.warn("No items returned from API");
+        setNextOffset(null);
+        return;
+      }
+
+      const mapped = mapEventsToEventItems(page.items, locationsData);
+
+      setAllItems((prev) => {
+        const seen = new Set(prev.map((x) => x.id));
+        const merged = [...prev];
+        for (const item of mapped) {
+          if (!seen.has(item.id)) merged.push(item);
+        }
+        return merged;
+      });
+
+      setNextOffset(page.next_offset ?? null);
+    } catch (error) {
+      console.error("Error loading more events:", error);
+      setLoadingMore(false);
+    } finally {
+      loadingMoreRef.current = false;
+      setLoadingMore(false);
+    }
+  }
+
+  const filteredItems = useMemo(() => {
+    if (activeCategory === "ALL") return allItems;
+    return allItems.filter((item) => item.coreCategory === activeCategory);
+  }, [allItems, activeCategory]);
+
+  const showEmptyState = loaded && filteredItems.length === 0;
+
+
+
+ 
 
   return (
     <section>
@@ -71,22 +116,47 @@ export default function MainContentFeed({
         ) : null}
       </div>
 
-  
-<div className="max-w-[860px]">      
-  <div className="grid grid-cols gap-6">
-  {filteredItems.map((event) => (
-    <NewStyleEventCard key={event.id} event={event} />
-  ))}
-</div></div>
-
-
-
-      {showEmptyState ? (
-        <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-          No events yet.
+      <div className="max-w-[860px]">
+        <div className="grid grid-cols-1 gap-6">
+          {filteredItems.map((event) => (
+            <NewStyleEventCard key={event.id} event={event} />
+          ))}
         </div>
-      ) : null}
-    </section>
-  );
-}
 
+        {showEmptyState ? (
+          <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+            No events yet.
+          </div>
+        ) : null}
+
+        {/* Load more */}
+      {loaded && nextOffset !== null ? (
+          <div className="mt-6 flex justify-center">
+            <button
+            
+              onClick={onLoadMore}
+              disabled={loadingMore}
+              className={[
+                "rounded-2xl px-5 py-3 text-sm font-extrabold transition",
+                loadingMore
+                  ? "cursor-not-allowed bg-slate-200 text-slate-500"
+                  : "bg-slate-900 text-white hover:bg-slate-800",
+              ].join(" ")}
+            >
+              {loadingMore ? "Loading..." : "Load more"}
+            </button>
+          </div>
+        ) : 
+          // optional: “end” indicator
+          loaded && allItems.length > 0 ?(
+            <div className="mt-6 text-center text-xs text-slate-500">
+              You’re all caught up.
+            </div>
+          ) : null
+        }
+      </div>
+    </section>
+  )
+
+
+}
