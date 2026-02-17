@@ -94,12 +94,11 @@ function formatDateTime(iso?: string | null) {
              <section className="md:col-span-2 space-y-6">
       <div className="bg-indigo-50 p-6 rounded-2xl border-l-4 border-indigo-500">
         <h3 className="text-lg font-bold text-indigo-900 mb-2 flex items-center gap-2">
-          <span>✍️</span> Writers Note 
+          <span>✍️</span> Highlight 
         </h3>
        
         <p className="text-slate-600 leading-relaxed italic">
-          As a writer living in Sweden, I have often missed the spiritual warmth of home. This ceremony is a bridge back to our roots, a chance to reconnect with our culture and find solace in shared traditions. I hope this event brings comfort and joy to all who attend.
-        </p>
+       {event.hightlight}</p>
       </div>
      
 
@@ -115,7 +114,7 @@ function formatDateTime(iso?: string | null) {
   <h2 className="text-xl font-extrabold text-slate-900">Details</h2>
 
   <div className="mt-6 grid grid-cols-1 gap-y-5 md:grid-cols-[220px_1fr] md:gap-y-4">
-    <DetailRow label="📢Event Organizer" value={event.location_website ?? "—"} />
+    <DetailRow label="📢Event Organizer" value={event.organizer_name ?? "—"} />
     <DetailRow
   label="📍Location"
   value={`${event.location_name ?? "—"} • ${event.country_code ?? "—"}`}
@@ -123,7 +122,7 @@ function formatDateTime(iso?: string | null) {
    
     <DetailRow label="📅 Date Start" value={formatDateTime(event.start_date)} />
     <DetailRow label="📆 Date End" value={event.end_date ? formatDateTime(event.end_date) : "—"} />
-    <DetailRow label="📧Contact" value={event.location_name ?? "—"} 
+    <DetailRow label="📧Contact" value={event.event_website ?? "—"} 
     
     
     />
@@ -144,10 +143,10 @@ function formatDateTime(iso?: string | null) {
                  <section className="md:col-span-2 space-y-6">
       <div className="bg-indigo-50 p-6 rounded-2xl border-l-4 border-indigo-500">
         <h3 className="text-lg font-bold text-indigo-900 mb-2 flex items-center gap-2">
-          <span>✍️</span> บันทึกจากผู้เขียน
+          <span>✍️</span> ไฮไลท์ (Highlight)
         </h3>
         <p className="text-slate-700 leading-relaxed mb-4 font-thai text-lg">
-          กลิ่นธูปหอมและแสงเทียนในคืนวันเพ็ญ... มาร่วมสัมผัสบรรยากาศความสงบที่เชื่อมโยงหัวใจคนไทยในต่างแดนเข้าด้วยกัน..
+           {event.hightlight_thai}
           
         </p>
       

@@ -18,8 +18,9 @@ export type EventItem = {
   id: string;
   title: string;
   sub_title_thai?: string | null;
-  location_adress?: string | null;
-  location_website?: string | null;
+  organizer_name?: string | null;
+  contact_info?: string | null;
+
   eventType: string;
   coreCategory: CoreCategoryKey;
 
