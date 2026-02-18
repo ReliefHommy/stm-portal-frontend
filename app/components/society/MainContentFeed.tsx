@@ -7,6 +7,7 @@ import type { CoreCategoryKey, EventItem } from "./types";
 import { fetchEvents, fetchEventsPaged, fetchLocations } from "./api";
 import { mapEventsToEventItems } from "./mappers";
 import NewStyleEventCard from "./NewStyleEventCard";
+import EventCard from "./EventCard";
 
 export default function MainContentFeed({
   title,
@@ -117,11 +118,12 @@ export default function MainContentFeed({
       </div>
 
       <div className="max-w-[860px]">
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-2 gap-6">
           {filteredItems.map((event) => (
-            <NewStyleEventCard key={event.id} event={event} />
+            <EventCard key={event.id} event={event} />
           ))}
         </div>
+
 
         {showEmptyState ? (
           <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">

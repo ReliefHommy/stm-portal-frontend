@@ -14,12 +14,12 @@ const DEFAULT_COUNTRIES: PartnerEventItem[] = [
   {
     event: "Thailand Showcase 2025",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/UK04-4.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/main_thai2026.png",
   },
   {
     event: "Magic of Thailand Festival 2025",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/UK03-3.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thai_film_night.png",
   },
   {
     event: "Thai Garden Festival 2025",
@@ -62,7 +62,7 @@ export default function PartnerEventCard({
     <section className="w-full">
       <div className="flex items-end justify-between gap-4 mb-4">
         <div>
-          <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+          <h2 className="truncate text-sm font-extrabold text-indigo-600">{title}</h2>
           <p className="text-sm text-slate-600">
            Scenes from recent Thai markets and festivals across Europe in 2025.
           </p>
@@ -90,8 +90,7 @@ export default function PartnerEventCard({
 
       <div className="relative">
         {/* Gradient edges (nice, subtle) */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-white to-transparent z-10" />
+       
 
         <div
           ref={scrollerRef}
@@ -131,14 +130,14 @@ export default function PartnerEventCard({
                       alt={item.event}
                       fill
                       sizes="176px"
-                      className="object-cover"
+                      className="object-cover "
                       priority={false}
                     />
                   </div>
 
                   {/* Label below image (not on image) */}
                   <div className="mt-2">
-                    <p className="text-base font-semibold text-slate-900">
+                    <p className="truncate text-sm font-extrabold text-slate-900">
                       {item.event}
                     </p>
                     <p className="text-xs text-slate-600">

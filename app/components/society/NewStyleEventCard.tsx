@@ -48,6 +48,7 @@ export default function NewStyleEventCard({ event }: { event: EventItem }) {
         {/* Right (details) */}
         <div className="border-t border-slate-200 p-6 md:border-t-0 md:border-l">
           <DetailRow label="Category" value={prettyCore(event.eventType)} />
+         
           <DetailRow
             label="Location"
             value={`${event.locationName} • ${event.country}`}
