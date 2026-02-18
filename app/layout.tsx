@@ -2,6 +2,7 @@
 
 
 
+import CookieNotice from '@/components/CookieNotice';
 import './globals.css'
 
 
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
        <main className="flex-grow">
 {children}
 </main>
-
+  <CookieNotice />
         </body>
     </html>
   );
