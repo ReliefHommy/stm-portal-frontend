@@ -12,19 +12,19 @@ type PartnerEventItem = {
 
 const DEFAULT_COUNTRIES: PartnerEventItem[] = [
   {
-    event: "Thailand Showcase 2025",
+    event: "Main Thai Festival",
     imageUrl:
       "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/main_thai2026.png",
   },
   {
-    event: "Magic of Thailand Festival 2025",
+    event: "Thai film night",
     imageUrl:
       "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/thai_film_night.png",
   },
   {
-    event: "Thai Garden Festival 2025",
+    event: "SongKran Festival Stockholm ",
     imageUrl:
-      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/DE06-6.png",
+      "https://pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev/society/event/Songkran-SE.png",
   },
 
 

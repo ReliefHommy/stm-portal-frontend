@@ -6,7 +6,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import type { CoreCategoryKey, EventItem } from "./types";
 import { fetchEvents, fetchEventsPaged, fetchLocations } from "./api";
 import { mapEventsToEventItems } from "./mappers";
-import NewStyleEventCard from "./NewStyleEventCard";
 import EventCard from "./EventCard";
 
 export default function MainContentFeed({
@@ -157,7 +156,9 @@ export default function MainContentFeed({
           ) : null
         }
       </div>
+      <br></br>
     </section>
+    
   )
 
 
