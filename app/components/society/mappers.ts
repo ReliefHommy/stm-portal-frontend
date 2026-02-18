@@ -25,7 +25,7 @@ function toCoreCategory(eventTypeRaw: string, locationCategoryRaw: string): Core
 
   // Based on your Django models
   if (locCat === "TEMPLE" || eventType === "RELIGIOUS") return "TEMPLE_DAY_TRACKER";
-  if (locCat === "MARKET" || locCat === "RESTAURANT" || eventType === "MARKET")
+  if (locCat === "MARKET" || locCat === "MARKET" || eventType === "Market/Food Festival")
     return "MARKET_FOOD_FESTIVALS";
   if (eventType === "CONCERT") return "MUSIC_ENTERTAINMENT";
   return "COMMUNITY_EVENTS";
