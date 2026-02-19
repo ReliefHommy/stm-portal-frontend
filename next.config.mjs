@@ -3,18 +3,19 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev',
-        
+        protocol: "https",
+        hostname: "pub-2a72cfdc56dc408cbaa236e02a09710b.r2.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "*.r2.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "society-somtam-backend.onrender.com",
       },
     ],
   },
-
-  // other config...
-
 };
-
-
-
 
 export default nextConfig;

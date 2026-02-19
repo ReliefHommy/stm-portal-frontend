@@ -31,6 +31,7 @@ export async function fetchEventsPaged(params?: {
   event_type?: string;
   location_id?: number;
   upcoming_only?: boolean;
+  ids?: number[];
 }) {
   const limit = params?.limit ?? 12;
   const offset = params?.offset ?? 0;
@@ -43,6 +44,9 @@ export async function fetchEventsPaged(params?: {
   if (params?.event_type) qs.set("event_type", params.event_type);
   if (typeof params?.location_id === "number") qs.set("location_id", String(params.location_id));
   if (typeof params?.upcoming_only === "boolean") qs.set("upcoming_only", String(params.upcoming_only));
+  if (Array.isArray(params?.ids) && params.ids.length > 0) {
+    qs.set("ids", params.ids.join(","));
+  }
 
   const res = await fetch(`/api/society/events/paged?${qs.toString()}`, { cache: "no-store" });
   if (!res.ok) {
@@ -67,7 +71,6 @@ export async function fetchLocations() {
   const data = await res.json();
   return Array.isArray(data) ? data : [];
 }
-
 
 
 

@@ -1,3 +1,4 @@
+//app/components/society/PartnerEventCard.tsx
 "use client";
 
 import React, { useMemo, useRef } from "react";

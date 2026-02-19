@@ -9,6 +9,7 @@ export async function GET(request: Request) {
   const event_type = searchParams.get("event_type");
   const location_id = searchParams.get("location_id");
   const upcoming_only = searchParams.get("upcoming_only");
+  const ids = searchParams.get("ids");
 
   // Build query string for backend
   const backendParams = new URLSearchParams();
@@ -19,6 +20,7 @@ export async function GET(request: Request) {
   if (event_type) backendParams.set("event_type", event_type);
   if (location_id) backendParams.set("location_id", location_id);
   if (upcoming_only) backendParams.set("upcoming_only", upcoming_only);
+  if (ids) backendParams.set("ids", ids);
 
   const backendUrl = `https://society-somtam-backend.onrender.com/api/society/events/paged?${backendParams.toString()}`;
 

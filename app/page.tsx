@@ -9,7 +9,7 @@ import EventSidebar from "./components/society/EventSidebar";
 import MainContentFeed from "./components/society/MainContentFeed";
 import FooterSociety from "./components/hompage/FooterSociety";
 import TopNav from "./components/society/TopNav";
-import PartnerEventCard from "./components/society/PartnerEventCard";
+import PartnerHighlightSection from "./components/society/PartnerHighlightSection";
 
 export default function HomePage() {
 
@@ -110,7 +110,8 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-8">
-                 <PartnerEventCard />
+              <PartnerHighlightSection type="RELIGIOUS" />
+              <PartnerHighlightSection type="MARKET" />
               <MainContentFeed
   title="Events Near Your EU Location"
   subtitle={`Showing EU events (priority: ${userCountry})`}

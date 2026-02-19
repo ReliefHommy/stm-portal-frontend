@@ -62,7 +62,7 @@ function formatDateTime(iso?: string | null) {
         <TopNav/>
       <div className="max-w-4xl mx-auto p-4 md:p-8 bg-white font-sans text-slate-900 rounded-2xl shadow-lg">
         
-          <header className="mb-8">
+    <header className="mb-8">
     <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden mb-6 shadow-lg">
 
 
