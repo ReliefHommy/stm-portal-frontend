@@ -110,8 +110,11 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-8">
+              
               <PartnerHighlightSection type="RELIGIOUS" />
               <PartnerHighlightSection type="MARKET" />
+              <PartnerHighlightSection type="CONCERT" />
+              <PartnerHighlightSection type="COMMUNITY" />
               <MainContentFeed
   title="Events Near Your EU Location"
   subtitle={`Showing EU events (priority: ${userCountry})`}

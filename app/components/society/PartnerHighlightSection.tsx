@@ -69,24 +69,51 @@ export default function PartnerHighlightSection({ type }: { type: HighlightEvent
                 href={`/events/${event.id}`}
                 className="snap-start shrink-0 basis-[83.333%] sm:basis-[calc((100%-0.75rem)/2)] lg:basis-[calc((100%-2.25rem)/4)]"
               >
-<article className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
-   <Image
-              src={event.imageUrl}
-              alt={event.title}
-              fill
-              className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
-            />
- <div className="absolute top-4 left-4 flex gap-2">
-        <span className="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-sm">{event.locationName}</span>
-        <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-semibold shadow-sm border border-slate-200">{event.country}</span>
+<article className="group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-sm bg-white">
+      {/* ✅ Fixed media frame (not controlled by text) */}
+      <div className="relative aspect-[4/5] w-full lg:aspect-[16/10">
+        <Image
+          src={event.imageUrl}
+          alt={event.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          priority={false}
+        />
+
+        {/* gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+        {/* badges */}
+        <div className="absolute left-4 top-4 flex max-w-[calc(100%-2rem)] gap-2">
+          <span className="max-w-[70%] truncate rounded-full bg-indigo-600/95 px-3 py-1 text-xs font-semibold text-white shadow-sm">
+            {event.locationName}
+          </span>
+          <span className="shrink-0 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-slate-900 shadow-sm">
+            {event.country}
+          </span>
+        </div>
+
+        {/* ✅ Text overlay pinned to bottom (won't change image height) */}
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 lg:p-4">
+          <h3 className="text-base font-extrabold text-white line-clamp-2 lg:text-sm">
+            {event.title}
+          </h3>
+
+          {event.sub_title_thai ? (
+            <p className="mt-1 text-sm text-white/70 line-clamp-1">
+              {event.sub_title_thai}
+            </p>
+          ) : null}
+
+          {event.organizer_name ? (
+            <p className="mt-2 text-xs text-white/70 line-clamp-1">
+              {event.organizer_name}
+            </p>
+          ) : null}
+        </div>
       </div>
+    </article>
 
-
-    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-    <h3 className="z-10 mt-3 text-md font-extrabold text-white">{event.organizer_name}</h3>
-   
-
-</article>
 
               
               
