@@ -10,6 +10,9 @@ import MainContentFeed from "./components/society/MainContentFeed";
 import FooterSociety from "./components/hompage/FooterSociety";
 import TopNav from "./components/society/TopNav";
 import PartnerHighlightSection from "./components/society/PartnerHighlightSection";
+import LastYearEvent from "./components/society/LastYearEvent";
+import NewStyleEventCard from "./components/society/NewStyleEventCard";
+import EventCard from "./components/society/EventCard";
 
 
 export default function HomePage() {
@@ -115,20 +118,21 @@ export default function HomePage() {
             <div className="space-y-8">
               
               <PartnerHighlightSection type="RELIGIOUS" />
+          
               <PartnerHighlightSection type="COMMUNITY" />
                 <PartnerHighlightSection type="MARKET" />
               <PartnerHighlightSection type="CONCERT" />
-            
-              
+
               <MainContentFeed
-  title="Events Near Your EU Location"
+  title="All Events in EU Locations"
   subtitle={`Showing EU events (priority: ${userCountry})`}
   activeCategory={activeCategory}
 
   
 />
-  <PartnerHighlightSection type="MARKET" />
-              <PartnerHighlightSection type="CONCERT" />
+
+
+             
               {/* Other sections (e.g. Saved Events) could go here based on activeNav */}
 
 
