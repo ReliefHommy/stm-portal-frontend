@@ -1,3 +1,4 @@
+//app/components/society/useHighlightEvents.ts
 "use client";
 
 import { useEffect, useMemo, useState } from "react";

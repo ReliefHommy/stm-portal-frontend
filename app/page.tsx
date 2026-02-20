@@ -11,6 +11,7 @@ import FooterSociety from "./components/hompage/FooterSociety";
 import TopNav from "./components/society/TopNav";
 import PartnerHighlightSection from "./components/society/PartnerHighlightSection";
 
+
 export default function HomePage() {
 
 
@@ -69,6 +70,7 @@ export default function HomePage() {
           {/* Main Content */}
           <div className="min-h-screen bg-white text-slate-900">
             <TopNav />
+      
 
             <div className="mb-6 hidden lg:block">
               <h1 className="text-3xl font-extrabold tracking-tight">{pageTitle}</h1>
@@ -109,12 +111,15 @@ export default function HomePage() {
               </div>
             </div>
 
+
             <div className="space-y-8">
               
               <PartnerHighlightSection type="RELIGIOUS" />
-              <PartnerHighlightSection type="MARKET" />
-              <PartnerHighlightSection type="CONCERT" />
               <PartnerHighlightSection type="COMMUNITY" />
+                <PartnerHighlightSection type="MARKET" />
+              <PartnerHighlightSection type="CONCERT" />
+            
+              
               <MainContentFeed
   title="Events Near Your EU Location"
   subtitle={`Showing EU events (priority: ${userCountry})`}
@@ -122,6 +127,8 @@ export default function HomePage() {
 
   
 />
+  <PartnerHighlightSection type="MARKET" />
+              <PartnerHighlightSection type="CONCERT" />
               {/* Other sections (e.g. Saved Events) could go here based on activeNav */}
 
 

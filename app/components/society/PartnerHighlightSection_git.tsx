@@ -1,5 +1,3 @@
-
-//app/components/society/PartnerHighlightSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -47,7 +45,7 @@ export default function PartnerHighlightSection({ type }: { type: HighlightEvent
       ) : null}
 
       <div
-        className="flex flex-nowrap snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth"
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <style jsx>{`
@@ -73,7 +71,7 @@ export default function PartnerHighlightSection({ type }: { type: HighlightEvent
               >
 <article className="group relative isolate overflow-hidden rounded-2xl border border-white/10 shadow-sm bg-white">
       {/* ✅ Fixed media frame (not controlled by text) */}
-      <div className="relative aspect-[4/5] w-full">
+      <div className="relative aspect-[4/5] w-full lg:aspect-[16/10">
         <Image
           src={event.imageUrl}
           alt={event.title}
