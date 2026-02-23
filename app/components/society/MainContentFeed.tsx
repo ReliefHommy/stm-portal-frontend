@@ -117,7 +117,7 @@ export default function MainContentFeed({
       </div>
 
       <div className="max-w-[860px]">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {filteredItems.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}

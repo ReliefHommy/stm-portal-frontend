@@ -112,11 +112,11 @@ export default function EventSidebar({
           </div>
 
           <div className="mt-3 text-xs text-white/60">
-            ✅ Connected to Ninja API (Render)
+            ✅ Connected to Thai Events in Sweden,Germany, UK and more
           </div>
 
           <div className="mt-2 text-xs text-white/60">
-            Next: make categories filter real events + add Country cards later
+            Next: Search for events, save your favorites, and share with friends!
           </div>
         </div>
       </div>

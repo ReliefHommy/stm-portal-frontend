@@ -11,7 +11,7 @@ const SECTION_COPY: Record<HighlightEventType, { title: string; subtitle: string
     subtitle: "Curated community activities from selected events.",
   },
   RELIGIOUS: {
-    title: "Religious Highlights",
+    title: "Temple Highlights",
     subtitle: "Curated temple and religious events.",
   },
   MARKET: {
@@ -19,7 +19,7 @@ const SECTION_COPY: Record<HighlightEventType, { title: string; subtitle: string
     subtitle: "Curated Thai market and food festival picks.",
   },
   CONCERT: {
-    title: "Concert Highlights",
+   title: "Music Highlights",
     subtitle: "Curated live music and entertainment picks.",
   },
 };
@@ -79,11 +79,11 @@ export default function PartnerHighlightSection({ type }: { type: HighlightEvent
       className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
       priority={false}
     />
-
+  
     {/* badges */}
-    <div className="absolute left-3 top-3 flex max-w-[calc(100%-1.5rem)] gap-2">
+    <div className="absolute left-4 top-4 flex max-w-[calc(100%-2rem)] gap-2">
       <span className="max-w-[70%] truncate rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-        {event.locationName}
+          📅 {event.startDateISO}
       </span>
       <span className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-900 shadow-sm">
         {event.country}
@@ -93,53 +93,26 @@ export default function PartnerHighlightSection({ type }: { type: HighlightEvent
 
   {/* White info panel */}
   <div className="px-4 pb-4 pt-3">
-    <h3 className="text-[15px] font-extrabold leading-snug text-white-900 line-clamp-2">
-      {event.title}
-    </h3>
+              <h3 className="text-base font-extrabold text-slate-600 line-clamp-2 lg:text-sm">
+            {event.title}
+          </h3>
+           {event.sub_title_thai ? (
+            <p className="mt-1 text-sm text-indigo-600 line-clamp-1">
+  
 
-    {event.sub_title_thai ? (
-      <p className="mt-1 text-sm font-medium text-white-600 line-clamp-1">
-        {event.sub_title_thai}
-      </p>
-    ) : null}
 
-    {event.organizer_name ? (
-      <p className="mt-1 text-sm text-slate-500 line-clamp-1">
-        {event.organizer_name}
-      </p>
-    ) : null}
+              {event.sub_title_thai}
+            </p>
+          ) : null}
+            {event.organizer_name ? (
+               <p className="mt-2 text-xs text-slate-600 line-clamp-1">
+                <span className="font-extrabold">Organized by</span> {event.organizer_name}
+            
+            </p>
+          ) : null}
 
-    {/* bottom row */}
-    <div className="mt-3 flex items-center">
-      {event.startDateISO ? (
-        <p className="text-xs font-medium text-white-500 line-clamp-1">
-          {event.startDateISO.slice(0, 10).split("-").reverse().join("/")}
-        </p>
-      ) : (
-        <span />
-      )}
-
-      {/* location icon */}
-      <button
-        type="button"
-        aria-label="Open location"
-        className="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-white-700 hover:bg-indigo-300"
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true" color="white">
-          <path
-            d="M12 22s7-4.35 7-11a7 7 0 10-14 0c0 6.65 7 11 7 11z"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          <path
-            d="M12 11.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-        </svg>
-      </button>
     </div>
-  </div>
+
 </article>
 
 
