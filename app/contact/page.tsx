@@ -16,7 +16,7 @@ export default function ContactPage() {
         
         {/* Header */}
         <header className="space-y-3 text-center mb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
             Contact Us
           </p>
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
@@ -89,7 +89,7 @@ export default function ContactPage() {
           {/* Button */}
           <button
             type="submit"
-            className="mt-4 w-full rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+            className="mt-4 w-full rounded-full bg-indigo-800 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400"
           >
             Send Message
           </button>
@@ -99,7 +99,7 @@ export default function ContactPage() {
         <div className="mt-12 text-center text-sm text-slate-500">
           <p>You may also reach us through email:</p>
           <p className="font-medium text-slate-700 mt-1">
-            nokinhouse.service@gmail.com
+            admin@somtammarket.com
           </p>
         </div>
       </div>

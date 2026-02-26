@@ -1,7 +1,9 @@
 import MainNavbar from "@/app/components/hompage/MainNavbar";
-
+import Link from 'next/link'
 import type { Metadata } from "next";
 import FooterSociety from "../components/hompage/FooterSociety";
+import AboutPartner from "./_sections/AboutPartner";
+import AboutVendor from "./_sections/AboutVendor";
 
 
 export const metadata: Metadata = {
@@ -27,8 +29,9 @@ const AboutPage = () => {
      
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-10 px-4 py-16 md:px-6 lg:px-8">
         {/* Page Header */}
-        <header className="space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">
+           <h2>About us</h2>
+        <header className="space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">
            About STM Marketplace
           </p>
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
@@ -46,23 +49,60 @@ const AboutPage = () => {
           <p className="text-slate-700">
            STM (Somtam Society) began with a simple observation in Sweden: the Thai community in Europe is vibrant and growing, but its information was scattered. We started as a creator-led platform to share the Secret of our culture—from traditional food and wellness practices to indie games inspired by Thai roots.
           </p>
-          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            The Evolution: Events, Stories, and Solutions.
-          </h2>
-          <p className="text-slate-700">
-         Today, we have grown into a multi-layered ecosystem designed to serve the Thai Diaspora and EU culture-seekers in three clear steps:</p>
-          <ul className="mt-3 space-y-2 text-slate-700">
-            <li>
-              • <span className="font-medium">Thai-EU Events (The Pulse):</span>  We are the first place to look for Thai festivals, temple fairs, and community meetups across all EU countries. We believe that physical connection is the heart of our society.
-            </li>
-            <li>
-              • <span className="font-medium">Content-First Exploration (The Soul):</span>  We dive deep into Thai food, holistic wellness, and creative play (Games), providing the context and stories that make our traditions meaningful.
-            </li>
-            <li>
-              • <span className="font-medium">The STM Marketplace (The Engine):</span>  We provide the infrastructure for Thai vendors in Europe. Our marketplace connects you directly with trusted Thai groceries, wellness practitioners, and authentic restaurant partners.
-            </li>
-          </ul>
+       
+        
+       
 
+        </section>
+                {/* Food Marketplace Section */}
+        <section className="space-y-4 rounded-2xl bg-white p-6 shadow-sm md:p-8">
+          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+           The Evolution: Events, Stories, and Solutions.
+          </h2>
+          <p className="text-sm leading-relaxed text-slate-700">
+           Today, we have grown into a multi-layered ecosystem designed to serve the Thai Diaspora and EU culture-seekers in three clear steps:
+            
+          </p>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-indigo-700">
+                   Thai-EU Events (The Pulse)
+              </h3>
+              <p className="mt-2 text-xs text-slate-700">
+                   We are the first place to look for Thai festivals, temple fairs, and community meetups across all EU countries. We believe that physical connection is the heart of our society.
+           
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-indigo-700">
+                Content-First Exploration (The Soul)
+              </h3>
+              <p className="mt-2 text-xs text-slate-700">
+           We dive deep into Thai food, holistic wellness, and creative play (Games), providing the context and stories that make our traditions meaningful.
+            
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-indigo-700">
+                The STM Marketplace (The Engine)
+              </h3>
+              <p className="mt-2 text-xs text-slate-700">
+                We provide the infrastructure for Thai vendors in Europe. Our marketplace connects you directly with trusted Thai groceries, wellness practitioners, and authentic restaurant partners.
+           
+              </p>
+            </div>
+          </div>
+
+
+  <div className="pt-2">
+  <Link
+    href="https://somtammarket.com/"
+    className="inline-flex items-center justify-center rounded-full bg-indigo-800 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+  >
+    Explore Event Partner Program
+  </Link>
+</div>
         </section>
 
         {/* Mission Section */}
@@ -96,6 +136,12 @@ const AboutPage = () => {
             access, share, and enjoy wherever you live.
           </p>
         </section>
+         <section>
+        <h2>For Partners</h2>
+        <AboutPartner />
+      </section>
+
+     
 
 
 

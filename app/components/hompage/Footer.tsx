@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-10">
+    <footer className="bg-indigo-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between">
         <div>
           <h3 className="font-bold text-lg">Somtam Marketplace</h3>
@@ -15,7 +15,7 @@ export default function Footer() {
           <h4 className="font-semibold">Quick Links</h4>
           <ul className="space-y-1 text-sm mt-2">
             <li><Link href="/about" className="hover:underline">About Us</Link></li>
-            <li><Link href="/partner" className="hover:underline">Join as Vendor</Link></li>
+            <li><Link href="/about" className="hover:underline">Join as Vendor</Link></li>
             <li><Link href="/contact" className="hover:underline">Contact</Link></li>
           </ul>
         </div>
