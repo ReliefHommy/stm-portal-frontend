@@ -3,8 +3,8 @@ import VendorDetailPage from "@/app/components/partner/VendorDetailPage";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   return <VendorDetailPage slug={slug} />;
 }

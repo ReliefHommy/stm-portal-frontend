@@ -142,7 +142,14 @@ function SectionTitle({ label }: { label: string }) {
   );
 }
 
-export default function PartnerVendorPublicProfilePage() {
+type VendorDetailPageProps = {
+  slug: string;
+};
+
+export default function PartnerVendorPublicProfilePage({
+  slug,
+}: VendorDetailPageProps) {
+  void slug;
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-6 md:px-6 md:py-10">
       {/* Header */}
