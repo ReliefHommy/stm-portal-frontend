@@ -11,8 +11,8 @@ export type Vendor = {
 };
 export const vendors: Vendor[] = [
   {
-    slug: "somtam-kitchen",
-    name: "Somtam Kitchen",
+    slug: "Farmer-kitchen",
+    name: "Farmer Kitchen",
     tagline: "Authentic Thai Food",
     note: "Providing traditional snacks for events.",
     city: "Malmö",
@@ -21,8 +21,8 @@ export const vendors: Vendor[] = [
     verified: true,
   },
   {
-    slug: "bkk-dessert-lab",
-    name: "BKK Dessert Lab",
+    slug: "bkk-dessert-farm",
+    name: "BKK Dessert Farm",
     tagline: "Thai Desserts & Tea",
     note: "Sweet sets for temple days & parties.",
     city: "Lund",
@@ -31,8 +31,8 @@ export const vendors: Vendor[] = [
     verified: true,
   },
   {
-    slug: "nordic-thai-grocery",
-    name: "Nordic Thai Grocery",
+    slug: "nordic-thai-Farm",
+    name: "Nordic Thai Farm",
     tagline: "Thai Ingredients",
     note: "Fresh herbs & essentials for home cooking.",
     city: "Göteborg",

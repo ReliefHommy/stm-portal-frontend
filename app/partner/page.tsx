@@ -1,8 +1,8 @@
 // app/partner/page.tsx
-import VendorPublicPage from "@/app/components/partner/VendorPublicPage";
+import VendorListPage from "../components/partner/VendorListPage";
 
 export default function Page() {
-  return <VendorPublicPage />;
+  return <VendorListPage />;
 }
 
 
