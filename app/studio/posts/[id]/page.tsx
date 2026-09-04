@@ -23,21 +23,39 @@ export default function PostDetailPage() {
   const params = useParams()
   const id = params?.id
   const [post, setPost] = useState<CampaignPost | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!id) return
-async function load() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/${id}/`,
-    { cache: 'no-store' }
-  )
-  const data = await res.json()
-  setPost(data)
-}
+    async function load() {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/${id}/`,
+          { cache: 'no-store' }
+        )
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const data = await res.json()
+        setPost(data)
+      } catch (err) {
+        console.error('Failed to load post:', err)
+        setError(err instanceof Error ? err.message : 'Failed to load post')
+      } finally {
+        setLoading(false)
+      }
+    }
     load()
   }, [id])
 
-  if (!post) return <div className="p-6">Loading post…</div>
+  if (loading) return <div className="p-6">Loading post…</div>
+
+  if (error || !post) {
+    return (
+      <div className="p-6 text-sm text-red-600">
+        Couldn&apos;t load post{error ? ` — ${error}` : ''}. Try again.
+      </div>
+    )
+  }
 
   const hashtagText = Array.isArray(post.hashtags)
     ? post.hashtags.join(' ')

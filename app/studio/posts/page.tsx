@@ -18,21 +18,37 @@ interface CampaignPost {
 export default function PostListPage() {
   const [posts, setPosts] = useState<CampaignPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function load() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/`, // ← FIXED
-        { cache: 'no-store' }
-      )
-      const data = await res.json()
-      setPosts(data)
-      setLoading(false)
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE}/api/studio/cms-post/`,
+          { cache: 'no-store' }
+        )
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const data = await res.json()
+        setPosts(data)
+      } catch (err) {
+        console.error('Failed to load posts:', err)
+        setError(err instanceof Error ? err.message : 'Failed to load posts')
+      } finally {
+        setLoading(false)
+      }
     }
     load()
   }, [])
 
   if (loading) return <div className="p-6">Loading posts…</div>
+
+  if (error) {
+    return (
+      <div className="p-6 text-sm text-red-600">
+        Couldn&apos;t load posts — {error}. Try again.
+      </div>
+    )
+  }
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-8 space-y-4">
