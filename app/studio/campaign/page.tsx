@@ -19,6 +19,7 @@ type CampaignPost = {
     instagram?: { text?: string }
     pinterest?: { title?: string; description?: string }
   }
+  blog?: { headline?: string; excerpt?: string; body_md?: string }
   cta?: string
   hashtags?: string[]
 }
@@ -181,6 +182,8 @@ export default function CampaignPage() {
         ig_text: p.social?.instagram?.text||'',
         pin_title: p.social?.pinterest?.title||'',
         pin_desc: p.social?.pinterest?.description||'',
+        blog_excerpt: p.blog?.excerpt||'',
+        blog_body: p.blog?.body_md||'',
         cta: p.cta||'',
         hashtags: p.hashtags||[],
       })),

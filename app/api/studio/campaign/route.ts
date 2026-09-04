@@ -29,11 +29,15 @@ Format strictly as JSON with:
         "instagram": {"text": "..."},
         "pinterest": {"title": "...", "description": "..."}
       },
+      "blog": {"headline": "...", "excerpt": "...", "body_md": "..."},
       "cta": "...",
       "hashtags": ["#tag1","#tag2","#STMStudio"]
     }
   ]
 }
+"blog.body_md" is markdown, 400-600 words, with H2 subheadings. It must
+cover the same topic as the social copy but must not repeat it verbatim -
+write it as a standalone article, not a longer caption.
 Only JSON. No prose or commentary.
 `
 

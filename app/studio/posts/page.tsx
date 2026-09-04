@@ -11,6 +11,8 @@ interface CampaignPost {
   channel: string
   cta: string
   created_at: string
+  blog_excerpt?: string
+  blog_body?: string
 }
 
 export default function PostListPage() {
@@ -54,7 +56,12 @@ export default function PostListPage() {
               View details →
             </Link>
             {/* ⭐ Publish Button STM-post*/}
-  <PublishButton campaignId={p.id} />
+  <PublishButton
+    campaignId={p.id}
+    title={p.title}
+    excerpt={p.blog_excerpt}
+    body={p.blog_body}
+  />
          
           </article>
 

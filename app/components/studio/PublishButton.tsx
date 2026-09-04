@@ -3,24 +3,22 @@
 
 type PublishProps = {
   campaignId: number
+  title?: string
+  excerpt?: string
+  body?: string
+  image_url?: string
 }
 
-export function PublishButton({ campaignId }: PublishProps) {
+export function PublishButton({ campaignId, title, excerpt, body, image_url }: PublishProps) {
   async function publish() {
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE
-     if (!API_BASE) {
-      alert('Missing NEXT_PUBLIC_API_BASE')
-      return
-    }
-    const url = `${API_BASE}/api/studio/${campaignId}/`
+    const url = `/api/studio/publish/${campaignId}`
 
     const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
-      body: JSON.stringify({}) // no body required for now
+      body: JSON.stringify({ title, excerpt, body, image_url }),
     })
 
     if (!res.ok) {
