@@ -1,15 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Settings, Wand2, FileText, Layers } from 'lucide-react'
-
-const items = [
-  { href: '/studio', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/studio/ai-tools', label: 'AI Tools', icon: Wand2 },
-  { href: '/studio/posts', label: 'Posts', icon: FileText },
-  { href: '/studio/templates', label: 'Templates', icon: Layers },
-  { href: '/studio/settings', label: 'Settings', icon: Settings },
-]
 export default function StudioFooter() {
   const pathname = usePathname()
   return (
@@ -27,13 +18,13 @@ export default function StudioFooter() {
         
         <div>
           <h3 className="font-bold text-lg">STM Studio_2</h3>
-  <Link href="/studio/campaign/saved" className="...">Saved</Link>
+  <Link href="/studio/campaign/saved" className="block px-3 py-2 text-sm hover:bg-gray-100 rounded-lg">Saved</Link>
 
         </div>
                 <div>
          {/* column 3 */}
           <h3 className="font-bold text-lg">STM Studio_3</h3>
-   <Link href="/studio/campaign" className="...">Campaign</Link>
+   <Link href="/studio/campaign" className="block px-3 py-2 text-sm hover:bg-gray-100 rounded-lg">Campaign</Link>
         </div>
 
 
