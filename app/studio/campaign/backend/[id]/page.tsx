@@ -121,6 +121,7 @@ export default async function BackendCampaignDetailPage({
             <div className="pt-2 border-t space-y-1">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-sm font-semibold">Pinterest</span>
+                <CopyBtn text={`${p.pin_title}\n\n${p.pin_desc}`} />
               </div>
               <div className="text-sm">
                 <span className="font-medium">Title:</span> {p.pin_title || '—'}
