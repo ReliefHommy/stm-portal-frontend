@@ -1,16 +1,16 @@
 const services = [
   {
-    title: 'Public vendor profile',
+    title: 'เครื่องมือสร้างแคตตาล็อกสินค้า เมนู และโปรโมชัน',
     description:
-      'Show your menu, hours, location, and contact details in one clean public page for EU customers.',
+      'อัปโหลดผลิตภัณฑ์ผ่าน CSV / Excel, สร้างชื่อและคำอธิบายผลิตภัณฑ์อัตโนมัติด้วย AI, การจัดการรูปภาพ + ราคา + หมวดหมู่, ลิงก์หน้าร้านที่แชร์ได้ (ไม่ต้องใช้เว็บไซต์), แดชบอร์ดผู้ดูแลระบบแบบง่ายสำหรับการอัปเดต',
   },
   {
-    title: 'Campaign posting tools',
+    title: 'AI ผู้ช่วยตอบกลับข้อความของลูกค้าโดยอัตโนมัติและจัดการคำสั่งซื้อตลอด 24 ชั่วโมง',
     description:
-      'Create seasonal promos and limited offers quickly, then publish across your channels in minutes.',
+      'AI ตอบกลับข้อความ Facebook / แชท ตอบคำถาม แนะน้ำเกี่ยวกับสินค้าจากแคตตาล็อกของคุณโดยอัตโนมัติ และจัดการคำสั่งซื้อโดยตรงผ่านแชท การฝึกอบรมคำถามที่พบบ่อย (เรียนรู้จากธุรกิจของคุณ)', 
   },
   {
-    title: 'Templates marketplace',
+    title: 'ระบบสั่งซื้อและตะกร้าสินค้าอัจฉริยะ',
     description:
       'Use ready-made campaign and menu templates designed for Thai food businesses to save setup time.',
   },
@@ -27,7 +27,7 @@ const services = [
   {
     title: 'Vendor dashboard',
     description:
-      'Manage listings, orders, and performance from one central workspace built for day-to-day operations.',
+      '',
   },
 ];
 
@@ -63,6 +63,7 @@ export default function ServicesSection() {
               <p className="mt-2 text-sm leading-6 text-gray-600">
                 {service.description}
               </p>
+
             </article>
           ))}
         </div>

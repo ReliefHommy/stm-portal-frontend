@@ -1,10 +1,12 @@
 import AboutSection from '../components/saas/AboutSection';
+import AiBussinessTools from '../components/saas/AiBussinessTool';
+import AiMarketingTool from '../components/saas/AiMarketingTool';
 import ContactSection from '../components/saas/ContactSection';
 import PricingPlans from '../components/saas/PricingPlans';
 import SaaSFooter from '../components/saas/SaaSFooter';
 import SaaSHero from '../components/saas/SaaSHero';
 import SaaSNavbar from '../components/saas/SaaSNavbar';
-import ServicesSection from '../components/saas/ServicesSection';
+
 
 export default function SaaSPage() {
   return (
@@ -12,7 +14,8 @@ export default function SaaSPage() {
       <SaaSNavbar />
       <main className="mx-auto w-full max-w-[1440px]">
         <SaaSHero />
-        <ServicesSection />
+        <AiBussinessTools />
+        <AiMarketingTool />
         <AboutSection />
         <PricingPlans />
         <ContactSection />
