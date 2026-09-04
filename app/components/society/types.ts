@@ -13,6 +13,7 @@ export type CoreCategory = {
 };
 
 export type SidebarNavKey = "HOME" | "SAVED" | "BOARD";
+export type PageSidebarNavKey = "HOME" | "EVENTS" | "BLOGS" | "MARKETPLACE";
 
 export type EventItem = {
   id: string;

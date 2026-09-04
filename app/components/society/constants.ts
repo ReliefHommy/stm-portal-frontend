@@ -1,5 +1,5 @@
 // app/components/society/constants.ts
-import type { CoreCategory } from "./types";
+import type { CoreCategory} from "./types";
 
 export const CORE_CATEGORIES: CoreCategory[] = [
   { key: "TEMPLE_DAY_TRACKER", label: "Temple" },
@@ -7,3 +7,5 @@ export const CORE_CATEGORIES: CoreCategory[] = [
   { key: "MUSIC_ENTERTAINMENT", label: "Music" },
   { key: "COMMUNITY_EVENTS", label: "Community" },
 ];
+
+

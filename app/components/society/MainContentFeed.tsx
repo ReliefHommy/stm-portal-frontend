@@ -12,12 +12,16 @@ export default function MainContentFeed({
   title,
   subtitle,
   activeCategory = "ALL",
-
+  previewMode = false,
+  previewLimit,
+  hideLoadMore = false,
 }: {
   title: string;
   subtitle?: string;
   activeCategory?: CoreCategoryKey | "ALL";
-
+  previewMode?: boolean;
+  previewLimit?: number;
+  hideLoadMore?: boolean;
 }) {
   const [allItems, setAllItems] = useState<EventItem[]>([]);
   const [locationsData, setLocationsData] = useState<any[]>([]);
@@ -99,7 +103,14 @@ export default function MainContentFeed({
     return allItems.filter((item) => item.coreCategory === activeCategory);
   }, [allItems, activeCategory]);
 
-  const showEmptyState = loaded && filteredItems.length === 0;
+  const displayedItems = useMemo(() => {
+    if (previewMode && previewLimit) {
+      return filteredItems.slice(0, previewLimit);
+    }
+    return filteredItems;
+  }, [filteredItems, previewMode, previewLimit]);
+
+  const showEmptyState = loaded && displayedItems.length === 0;
 
 
 
@@ -118,7 +129,7 @@ export default function MainContentFeed({
 
       <div className="max-w-[860px]">
         <div className="grid grid-cols-1 gap-6">
-          {filteredItems.map((event) => (
+          {displayedItems.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
         </div>
@@ -131,7 +142,7 @@ export default function MainContentFeed({
         ) : null}
 
         {/* Load more */}
-      {loaded && nextOffset !== null ? (
+      {!hideLoadMore && loaded && nextOffset !== null ? (
           <div className="mt-6 flex justify-center">
             <button
             
@@ -158,6 +169,8 @@ export default function MainContentFeed({
       </div>
       <br></br>
     </section>
+
+    
     
   )
 

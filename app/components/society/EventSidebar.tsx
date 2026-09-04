@@ -3,7 +3,7 @@
 "use client";
 
 import React from "react";
-import type { CoreCategory, CoreCategoryKey, SidebarNavKey } from "./types";
+import type { CoreCategory, CoreCategoryKey, SidebarNavKey ,PageSidebarNavKey} from "./types";
 
 
 
@@ -16,6 +16,9 @@ type Props = {
   // Navigation (optional, so it won’t break existing usage)
   activeNav?: SidebarNavKey;
   onNavChange?: (key: SidebarNavKey) => void;
+    // Navigation (optional, so it won’t break existing usage)
+  PageactiveNav?: PageSidebarNavKey;
+  onPageNavChange?: (key: PageSidebarNavKey) => void;
 
   // Mobile drawer
   isMobile?: boolean;
@@ -31,11 +34,28 @@ export default function EventSidebar({
   onNavChange,
   isMobile,
   onCloseMobile,
+  PageactiveNav = "HOME",
+  onPageNavChange,
+ 
+
+
+
+
+
 }: Props) {
   const handleNav = (key: SidebarNavKey) => {
     onNavChange?.(key);
+    
     if (isMobile) onCloseMobile?.();
+
+
   };
+   
+    const handlePageNav = (key: PageSidebarNavKey) => {
+    onPageNavChange?.(key);
+    
+    if (isMobile) onCloseMobile?.();
+    }
 
   return (
     <div className="h-full rounded-2xl bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 p-4 text-white shadow-sm">
@@ -56,10 +76,10 @@ export default function EventSidebar({
         </div>
       ) : null}
 
-      {/* Section 1: Navigation */}
+      {/* Section 1: EventSaveNavigation */}
       <div className="mb-6">
         <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
-          Page Navigation
+          Event Navigation
         </div>
 
         <div className="space-y-1">
@@ -82,7 +102,7 @@ export default function EventSidebar({
         </div>
       </div>
 
-      {/* Section 2: Categories */}
+      {/* Section 2: Event Categories */}
       <div>
         <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
           Event Categories
@@ -104,7 +124,10 @@ export default function EventSidebar({
             />
           ))}
         </div>
-
+        <br></br>
+        <hr></hr>
+        
+{/* Section 3: Somtam Society */}
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
           <div className="font-semibold text-white">Somtam Society</div>
           <div className="mt-1 text-white/80">
@@ -118,6 +141,44 @@ export default function EventSidebar({
           <div className="mt-2 text-xs text-white/60">
             Next: Search for events, save your favorites, and share with friends!
           </div>
+        </div>
+      <br></br>
+        <hr></hr>
+       
+
+      </div>
+       <br></br>
+     
+       {/* Section 4: Page */}
+             <div className="mb-6">
+        <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
+          Page Navigation
+        </div>
+
+        <div className="space-y-1">
+          <div className="space-y-1">
+  <SidebarLink
+    label="Home"
+    active={PageactiveNav === "HOME"}
+    onClick={() => handlePageNav("HOME")}
+  />
+  <SidebarLink
+    label="Events"
+    active={PageactiveNav === "EVENTS"}
+    onClick={() => handlePageNav("EVENTS")}
+  />
+  <SidebarLink
+    label="Blogs"
+    active={PageactiveNav === "BLOGS"}
+    onClick={() => handlePageNav("BLOGS")}
+  />
+  <SidebarLink
+    label="Marketplace"
+    active={PageactiveNav === "MARKETPLACE"}
+    onClick={() => handlePageNav("MARKETPLACE")}
+  />
+</div>
+
         </div>
       </div>
     </div>
