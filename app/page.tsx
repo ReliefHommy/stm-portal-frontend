@@ -1,177 +1,149 @@
-
-// app/page.tsx
 "use client";
 
-import React, { useState } from "react";
-import type { CoreCategoryKey, SidebarNavKey } from "./components/society/types";
-import { CORE_CATEGORIES } from "./components/society/constants";
-import EventSidebar from "./components/society/EventSidebar";
-import MainContentFeed from "./components/society/MainContentFeed";
+import React from "react";
+import Link from "next/link";
+import MainNavbar from "./components/hompage/MainNavbar";
+
 import FooterSociety from "./components/hompage/FooterSociety";
-import TopNav from "./components/society/TopNav";
-import PartnerHighlightSection from "./components/society/PartnerHighlightSection";
+import HeroSociety from "./components/hompage/Hero";
+import FeaturedThisWeek from "./components/hompage/FeaturedThisWeek";
+import CategoryBar from "./components/hompage/CategoryBar";
+import CategoryTiles from "./components/hompage/CategoryTiles";
+import BlogContentFeed from "./components/blog/BlogContentFeed";
 
 
 export default function HomePage() {
-
-
-  // Sidebar (mobile drawer)
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  // Keep these for UI (filter logic later)
-  const [activeCategory, setActiveCategory] = useState<CoreCategoryKey | "ALL">("ALL");
-  const [activeNav, setActiveNav] = useState<SidebarNavKey>("HOME");
-
-  // Mock "EU location" for subtitle only (real geo later)
-  const userCountry = "Sweden";
-
-  const pageTitle =
-    activeNav === "HOME"
-      ? "Go Together Luna Temple Events"
-      : activeNav === "SAVED"
-      ? "Saved Events"
-      : "Go Together Board";
-
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      {/* Top gradient header */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-fuchsia-200 via-white to-white" />
+      {/* Top gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-fuchsia-200 via-white to-white" />
 
-      {/* Mobile Top Bar */}
-      <header className="relative z-10 flex items-center gap-3 px-4 pt-4 lg:hidden">
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-50"
-          aria-label="Open menu"
-        >
-          ☰
-        </button>
+      <div className="relative z-10">
+        <MainNavbar />
+    
+<CategoryBar/>
 
-        <div className="flex-1">
-          <div className="text-sm text-slate-500">Somtam Society</div>
-          <div className="text-lg font-bold">{pageTitle}</div>
-        </div>
 
-        <div className="flex items-center gap-2">
-          <button className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm hover:bg-slate-50">
-            Search
-          </button>
-        </div>
-      </header>
+        <HeroSociety/>
+        <FeaturedThisWeek/>
+< CategoryTiles/>
+        <main className="mx-auto max-w-[1280px] px-4 pb-16 pt-6 lg:px-6">
+          {/* Section 1: Hero */}
+         
 
-      {/* Layout grid */}
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 pb-10 pt-6 lg:px-6">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[320px_1fr]">
-          {/* Desktop Sidebar */}
-          <aside className="hidden lg:block">
-         <EventSidebar activeNav={activeNav} onNavChange={setActiveNav} activeCategory={activeCategory} onCategoryChange={setActiveCategory} categories={CORE_CATEGORIES} onCloseMobile={() => setSidebarOpen(false)} isMobile={false} />
-          </aside>
-
-          {/* Main Content */}
-          <div className="min-h-screen bg-white text-slate-900">
-            <TopNav />
+          {/* Section 2: Explore STM cards */}
       
 
-            <div className="mb-6 hidden lg:block">
-              <h1 className="text-3xl font-extrabold tracking-tight">{pageTitle}</h1>
-              <p className="mt-2 text-slate-600">
-                Find temple days, markets, music, and community meetups across EU.
-              </p>
-            </div>
-
-            {/* Mobile category chips (UI only for now) */}
-            <div className="mb-4 lg:hidden">
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => setActiveCategory("ALL")}
-                  className={[
-                    "rounded-full px-3 py-1 text-sm font-semibold transition",
-                    activeCategory === "ALL"
-                      ? "bg-slate-900 text-white"
-                      : "bg-slate-100 text-slate-700 hover:bg-slate-200",
-                  ].join(" ")}
-                >
-                  All
-                </button>
-
-                {CORE_CATEGORIES.map((c) => (
-                  <button
-                    key={c.key}
-                    onClick={() => setActiveCategory(c.key)}
-                    className={[
-                      "rounded-full px-3 py-1 text-sm font-semibold transition",
-                      activeCategory === c.key
-                        ? "bg-slate-900 text-white"
-                        : "bg-slate-100 text-slate-700 hover:bg-slate-200",
-                    ].join(" ")}
-                  >
-                    {c.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Section 3: Upcoming Events preview */}
 
 
-            <div className="space-y-8">
-                            <MainContentFeed
-  title="All Events in EU Locations"
-  subtitle={`Showing EU events (priority: ${userCountry})`}
-  activeCategory={activeCategory}
-
-  
-/>
-              
-              <PartnerHighlightSection type="RELIGIOUS" />
-          
-              <PartnerHighlightSection type="COMMUNITY" />
-                <PartnerHighlightSection type="MARKET" />
-              <PartnerHighlightSection type="CONCERT" />
+          {/* Section 4: Marketplace preview */}
 
 
+          {/* Section 5: Latest Stories preview */}
+          <BlogContentFeed
+            title="Latest Stories"
+            subtitle="Fresh posts from STM Studio"
+          />
 
+          {/* Section 6: About STM */}
 
-             
-              {/* Other sections (e.g. Saved Events) could go here based on activeNav */}
+        </main>
 
+        <FooterSociety />
+      </div>
+    </div>
+  );
+}
 
-
-            </div>
-
-            <FooterSociety />
-          </div>
-        </div>
+function SectionHeader({
+  title,
+  subtitle,
+  ctaHref,
+  ctaLabel,
+}: {
+  title: string;
+  subtitle?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">
+          {title}
+        </h2>
+        {subtitle ? <p className="mt-1 text-sm text-slate-600">{subtitle}</p> : null}
       </div>
 
-      {/* Mobile Drawer */}
-      {sidebarOpen ? (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="absolute inset-0 bg-black/60"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <div className="absolute left-0 top-0 h-full w-[88%] max-w-sm">
-           <EventSidebar
-  activeNav={activeNav}
-  onNavChange={(k) => {
-    setActiveNav(k);
-    setSidebarOpen(false);
-  }}
-  activeCategory={activeCategory}
-  onCategoryChange={(k) => {
-    setActiveCategory(k);
-    setSidebarOpen(false);
-  }}
-  categories={CORE_CATEGORIES}
-  onCloseMobile={() => setSidebarOpen(false)}
-  isMobile
-/>
-
-          </div>
-        </div>
+      {ctaHref && ctaLabel ? (
+        <Link
+          href={ctaHref}
+          className="text-sm font-bold text-fuchsia-700 transition hover:text-fuchsia-800"
+        >
+          {ctaLabel}
+        </Link>
       ) : null}
     </div>
   );
 }
+
+function ExploreCard({
+  title,
+  description,
+  href,
+}: {
+  title: string;
+  description: string;
+  href: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+    >
+      <div className="text-lg font-extrabold text-slate-900 group-hover:text-fuchsia-700">
+        {title}
+      </div>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+      <div className="mt-4 text-sm font-bold text-fuchsia-700">Open →</div>
+    </Link>
+  );
+}
+
+function InfoCard({
+  title,
+  text,
+}: {
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-extrabold text-slate-900">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+    </div>
+  );
+}
+
+function StoryPreviewCard({
+  title,
+  text,
+}: {
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-fuchsia-100 via-orange-50 to-slate-100" />
+      <h3 className="mt-4 text-lg font-extrabold leading-6 text-slate-900">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+    </div>
+  );
+}
+
+
+
 
 
 
